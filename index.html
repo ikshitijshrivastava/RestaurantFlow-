@@ -28,6 +28,104 @@
   .customer-shell .input{font-size:16px;min-height:46px}
   .customer-shell .btn{min-height:46px}
 }
+
+/* ===== RestaurantFlow V5.3 — "Spice Market" visual refresh (CSS only; no markup/JS changes) =====
+   Palette: aubergine #2B1346 · saffron #FFB703 · raspberry #C81E5B · chili #E8590C · leaf #0C8A55 · lilac mist #F6F2FC */
+:root{--ink:#2B1346;--saffron:#FFB703;--rasp:#C81E5B;--chili:#E8590C;--leaf:#0C8A55;--leaf-dark:#0A7447;--mist:#F6F2FC;--line:#E8DFF5;--soft:#EFE7FA;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--mist);color:#241a33;line-height:1.45;-webkit-text-size-adjust:100%}
+h1,h2,h3,.h1,.metric{font-family:var(--serif);color:var(--ink);letter-spacing:-.01em}
+h2{font-size:23px;margin:0 0 6px}h3{font-size:18px}
+.h1{font-size:28px;font-weight:700}
+.muted{color:#6b5d80}
+label{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-top:2px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 10px 28px -16px rgba(43,19,70,.35)}
+.card .card{box-shadow:none;border-radius:12px;padding:14px;background:#FDFBFF}
+#menuEditor{background:#FBF8FF!important}
+/* inputs */
+.input,td input,td select{border:1.5px solid #D9CCEE;border-radius:10px;background:#fff;color:#241a33;min-height:44px}
+td input,td select{min-height:38px;border-radius:8px}
+.input:focus,td input:focus,td select:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,183,3,.55)}
+.input::placeholder{color:#9a8fb0}
+/* buttons */
+.btn{background:var(--leaf);color:#fff;border-radius:12px;min-height:44px;padding:11px 18px;font-size:15px;box-shadow:0 6px 14px -8px rgba(12,138,85,.9);transition:background .15s,transform .1s}
+.btn:hover{background:var(--leaf-dark)}
+.btn:active{transform:scale(.97)}
+.btn.secondary{background:var(--ink);box-shadow:0 6px 14px -8px rgba(43,19,70,.9)}
+.btn.secondary:hover{background:#3d1d62}
+.btn.light{background:var(--soft);color:var(--ink);box-shadow:none}
+.btn.light:hover{background:#E2D5F4}
+.btn:disabled{opacity:.45;box-shadow:none}
+.btn:focus-visible,.tab:focus-visible,.input:focus-visible{outline:2px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 5px var(--saffron)}
+.row-actions{gap:8px}
+/* messages */
+.error{background:#FFE4EC;color:#8F1240;border-left:5px solid var(--rasp)}
+.ok{background:#DDF8EA;color:#0A5E3A;border-left:5px solid var(--leaf)}
+.warning{background:#FFF3D6;color:#7A4A00;border-left:5px solid var(--saffron);border-radius:9px;padding:10px 12px}
+/* pills & status badges */
+.pill{background:#D9F7E8;color:#0A6B42;font-weight:700;padding:5px 11px}
+.badge{font-weight:700;padding:5px 11px;color:#3b2f4d;background:#EDE5F8}
+.status-new{background:#FFEFC2;color:#7A4A00}
+.status-accepted{background:#DCEBFF;color:#17458F}
+.status-preparing{background:#EBDDFF;color:#5B21B6}
+.status-ready{background:#D2F5E3;color:#0A6B42}
+.status-delivered{background:#C9F2EC;color:#0B6B63}
+.status-cancelled,.status-declined{background:#FFD9E3;color:#9B1240}
+.status-closed{background:#E7E3EE;color:#41364f}
+/* tables */
+th,td{border:0;border-bottom:1px solid #EEE7F8;padding:11px 10px}
+th{background:var(--soft);color:var(--ink);font-weight:700;font-size:13.5px;white-space:nowrap}
+tbody tr:nth-child(even){background:#FBF9FE}
+.preview{border-radius:12px}
+.upload{border:2px dashed #B9A5DA;background:#FAF7FF;border-radius:16px}
+.upload h3{margin:0 0 4px}
+/* top header cards inside admin / staff */
+#adminView>.card.top,#staffMain>.card.top{border-left:7px solid var(--saffron)}
+/* sidebar */
+.tabs{background:var(--ink);color:#EDE4FA;padding:22px 12px 18px;box-shadow:6px 0 24px -10px rgba(43,19,70,.5)}
+.tabs::before{content:"RestaurantFlow";display:block;font-family:var(--serif);font-weight:700;font-size:21px;color:var(--saffron);margin:2px 8px 18px}
+.tabs .tab{color:#DDD0F2;font-size:14.5px;min-height:44px;padding:9px 12px 9px 10px;border-radius:12px;margin:3px 0;display:flex;align-items:center}
+.tabs .tab:hover{background:rgba(255,255,255,.10);color:#fff}
+.tabs .tab.active{background:var(--saffron);color:var(--ink);font-weight:700}
+.tab:before{width:28px;height:28px;line-height:28px;text-align:center;border-radius:9px;background:rgba(255,255,255,.12);margin-right:10px;font-size:14px;flex:none}
+.tab.active:before{background:rgba(43,19,70,.14)}
+/* dashboard & metric tiles: solid colour blocks */
+#dashboardTab>.grid>.card,.card:has(>.metric){border:0;color:var(--ink)}
+#dashboardTab>.grid>.card:nth-child(1),.grid>.card:has(>.metric):nth-child(4n+1){background:#FFD54A}
+#dashboardTab>.grid>.card:nth-child(2),.grid>.card:has(>.metric):nth-child(4n+2){background:#7DE7B4}
+#dashboardTab>.grid>.card:nth-child(3),.grid>.card:has(>.metric):nth-child(4n+3){background:#FF9DB8}
+.grid>.card:has(>.metric):nth-child(4n+4){background:#C9B6F5}
+#dashboardTab>.grid>.card .h1,.metric{font-size:36px;line-height:1.1;margin-top:6px}
+#dashboardTab>.grid>.card:nth-child(n),.grid>.card:has(>.metric){box-shadow:0 10px 24px -14px rgba(43,19,70,.55)}
+/* customer QR page */
+.customer-header{background:linear-gradient(120deg,var(--rasp),var(--chili));border:0;color:#fff;box-shadow:0 14px 30px -16px rgba(200,30,91,.8)}
+.customer-header .h1{color:#fff;font-size:30px}
+.customer-header .muted{color:#FFE9F0;font-size:15px}
+.customer-header .pill{background:#fff;color:var(--ink);font-size:17px;font-weight:800;padding:9px 16px;border-radius:12px}
+.customer-menu-card h2,.customer-cart-card h2{font-size:24px}
+.customer-item-card{background:#fff!important;border:1px solid var(--line);border-left:6px solid var(--saffron);border-radius:14px}
+.customer-item-card h3{font-size:18px}
+.customer-item-photo{width:96px;height:76px;border-radius:12px}
+.customer-item-card .btn[data-add-cart]{background:var(--saffron);color:var(--ink);box-shadow:none;min-width:96px}
+.customer-item-card .btn[data-add-cart]:hover{background:#F2A900}
+.customer-item-card .btn[data-add-cart]::before{content:"+ "}
+.customer-cart-card{border-top:7px solid var(--saffron)}
+#customerSubtotal{font-size:21px;color:var(--ink)}
+#placeCustomerOrderBtn{min-height:54px;font-size:17px}
+#customerOrderStatus{font-size:15px;padding:8px 16px}
+.payment-summary .field{background:#FAF7FF;border:1px solid var(--line);border-radius:12px}
+/* login */
+#loginView{border-top:7px solid var(--saffron)}
+#loginView .h1{font-size:32px}
+@media(max-width:700px){
+  .tabs{position:sticky;top:0;padding:8px;border-radius:0 0 16px 16px;gap:6px;box-shadow:0 8px 18px -12px rgba(43,19,70,.8)}
+  .tabs::before{display:none}
+  .tabs .tab{min-width:max-content;padding:9px 14px 9px 10px;border-radius:999px}
+  #staffMain{padding-left:0!important}
+  .card{padding:16px;border-radius:14px}
+  .h1{font-size:24px}
+  .customer-header .h1{font-size:25px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script>
 // Self-contained QR generator based on qrcode-terminal vendor/QRCode (MIT).
