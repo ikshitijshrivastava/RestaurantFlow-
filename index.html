@@ -1782,7 +1782,7 @@ async function loadStaffPage(id){
    <div class="grid">
      <div>
        <label>Order</label>
-       <select id="staffPayOrder" class="input">${arr.map(o=>{const total=Number(o.total??staffTotal(o))||0;return \`<option value="${o.id}">${esc(o.orderNumber||o.id)} • Table ${esc(o.table||o.tableNumber||'—')} • ${formatMoney(total)}</option>\`}).join('')}</select>
+       <select id="staffPayOrder" class="input">${arr.map(o=>{const total=Number(o.total??staffTotal(o))||0;return `<option value="${o.id}">${esc(o.orderNumber||o.id)} • Table ${esc(o.table||o.tableNumber||'—')} • ${formatMoney(total)}</option>`}).join('')}</select>
        <div id="staffPaymentSummary" class="payment-summary"></div>
      </div>
      <div>
