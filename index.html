@@ -4,7 +4,31 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>RestaurantFlow V5 - Complete Restaurant Flow</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;color:#17202a}.wrap{max-width:1450px;margin:auto;padding:20px}.card{background:#fff;border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 2px 12px #00000012}.login{max-width:480px;margin:7vh auto}.h1{font-size:28px;font-weight:700}.muted{color:#667085}.input{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;margin:7px 0 14px;font-size:16px}.btn{border:0;border-radius:9px;padding:12px 16px;font-weight:700;cursor:pointer;background:#166534;color:#fff}.btn.secondary{background:#475569}.btn.light{background:#e2e8f0;color:#17202a}.btn:disabled{opacity:.5;cursor:not-allowed}.msg{padding:12px;border-radius:9px;margin:12px 0;display:none;white-space:pre-wrap}.error{background:#fee2e2;color:#991b1b}.ok{background:#dcfce7;color:#166534}.tabs{position:fixed;z-index:20;left:0;top:0;bottom:0;width:235px;background:#202a25;color:#eaf1ed;padding:74px 12px 18px;overflow:auto;display:block;margin:0}.tab{display:block;width:100%;text-align:left;background:transparent;color:#dce5e0;padding:11px 12px;border:0;border-radius:10px;margin:2px 0;cursor:pointer;font-size:14px}.tab:hover,.tab.active{background:#304038;color:#fff}.tab:nth-child(1),.tab:nth-child(2),.tab:nth-child(3),.tab:nth-child(4),.tab:nth-child(5),.tab:nth-child(6),.tab:nth-child(7),.tab:nth-child(8),.tab:nth-child(9),.tab:nth-child(10),.tab:nth-child(11),.tab:nth-child(12),.tab:nth-child(13),.tab:nth-child(14){padding-left:14px}.tab:before{display:inline-block;width:25px;font-size:15px}.tab[data-tab=dashboard]:before{content:'▦'}.tab[data-tab=import]:before{content:'⇧'}.tab[data-tab=menu]:before{content:'☰'}.tab[data-tab=categories]:before{content:'▤'}.tab[data-tab=offers]:before{content:'🏷'}.tab[data-tab=tables]:before{content:'▦'}.tab[data-tab=orders]:before{content:'▣'}.tab[data-tab=billing]:before{content:'₹'}.tab[data-tab=payments]:before{content:'●'}.tab[data-tab=reports]:before{content:'◒'}.tab[data-tab=staff]:before{content:'♙'}.tab[data-tab=bulk]:before{content:'⇧'}.tab[data-tab=settings]:before{content:'⚙'}.tab[data-tab=audit]:before{content:'◷'}#adminView{padding-left:250px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:800px){.grid{grid-template-columns:1fr}}.upload{border:2px dashed #94a3b8;border-radius:14px;padding:22px;text-align:center;background:#f8fafc;min-height:150px}.upload input{display:block;width:100%;margin-top:14px}.preview{overflow:auto}table{border-collapse:collapse;width:100%;min-width:760px}th,td{border:1px solid #e2e8f0;padding:9px;text-align:left}th{background:#f1f5f9;color:#475569}td input,td select{width:100%;padding:7px;border:1px solid #cbd5e1;border-radius:6px}.hidden{display:none!important}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#dcfce7;color:#166534;font-size:12px}.small{font-size:13px}.audit-table{min-width:900px}.audit-table th{white-space:nowrap}.audit-time{white-space:nowrap}.audit-action{font-weight:700}.audit-detail{line-height:1.45}..badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#e2e8f0;font-size:12px}.status-new{background:#fef3c7}.status-accepted{background:#dbeafe}.status-preparing{background:#ede9fe}.status-ready{background:#dcfce7}.status-delivered{background:#d1fae5}.status-cancelled,.status-declined{background:#fee2e2}.status-closed{background:#e5e7eb}.metric{font-size:24px;font-weight:700}.row-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.stickybar{position:sticky;bottom:8px;background:#fff;padding:10px;border-top:1px solid #e2e8f0}.compact{min-width:0!important}.money{text-align:right;white-space:nowrap}.warning{background:#fff7ed;color:#9a3412}.section-title{margin:8px 0}.''@media(max-width:700px){.tabs{position:static;width:100%;display:flex;gap:6px;padding:8px;overflow-x:auto}.tab{min-width:max-content;width:auto;text-align:left}.tab:before{width:20px}#adminView{padding-left:0}.wrap{padding:12px}}</style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;color:#17202a}.wrap{max-width:1450px;margin:auto;padding:20px}.card{background:#fff;border-radius:14px;padding:20px;margin:14px 0;box-shadow:0 2px 12px #00000012}.login{max-width:480px;margin:7vh auto}.h1{font-size:28px;font-weight:700}.muted{color:#667085}.input{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;margin:7px 0 14px;font-size:16px}.btn{border:0;border-radius:9px;padding:12px 16px;font-weight:700;cursor:pointer;background:#166534;color:#fff}.btn.secondary{background:#475569}.btn.light{background:#e2e8f0;color:#17202a}.btn:disabled{opacity:.5;cursor:not-allowed}.msg{padding:12px;border-radius:9px;margin:12px 0;display:none;white-space:pre-wrap}.error{background:#fee2e2;color:#991b1b}.ok{background:#dcfce7;color:#166534}.tabs{position:fixed;z-index:20;left:0;top:0;bottom:0;width:235px;background:#202a25;color:#eaf1ed;padding:74px 12px 18px;overflow:auto;display:block;margin:0}.tab{display:block;width:100%;text-align:left;background:transparent;color:#dce5e0;padding:11px 12px;border:0;border-radius:10px;margin:2px 0;cursor:pointer;font-size:14px}.tab:hover,.tab.active{background:#304038;color:#fff}.tab:nth-child(1),.tab:nth-child(2),.tab:nth-child(3),.tab:nth-child(4),.tab:nth-child(5),.tab:nth-child(6),.tab:nth-child(7),.tab:nth-child(8),.tab:nth-child(9),.tab:nth-child(10),.tab:nth-child(11),.tab:nth-child(12),.tab:nth-child(13),.tab:nth-child(14){padding-left:14px}.tab:before{display:inline-block;width:25px;font-size:15px}.tab[data-tab=dashboard]:before{content:'▦'}.tab[data-tab=import]:before{content:'⇧'}.tab[data-tab=menu]:before{content:'☰'}.tab[data-tab=categories]:before{content:'▤'}.tab[data-tab=offers]:before{content:'🏷'}.tab[data-tab=tables]:before{content:'▦'}.tab[data-tab=orders]:before{content:'▣'}.tab[data-tab=billing]:before{content:'₹'}.tab[data-tab=payments]:before{content:'●'}.tab[data-tab=reports]:before{content:'◒'}.tab[data-tab=staff]:before{content:'♙'}.tab[data-tab=bulk]:before{content:'⇧'}.tab[data-tab=settings]:before{content:'⚙'}.tab[data-tab=audit]:before{content:'◷'}#adminView{padding-left:250px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:800px){.grid{grid-template-columns:1fr}}.upload{border:2px dashed #94a3b8;border-radius:14px;padding:22px;text-align:center;background:#f8fafc;min-height:150px}.upload input{display:block;width:100%;margin-top:14px}.preview{overflow:auto}table{border-collapse:collapse;width:100%;min-width:760px}th,td{border:1px solid #e2e8f0;padding:9px;text-align:left}th{background:#f1f5f9;color:#475569}td input,td select{width:100%;padding:7px;border:1px solid #cbd5e1;border-radius:6px}.hidden{display:none!important}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#dcfce7;color:#166534;font-size:12px}.small{font-size:13px}.audit-table{min-width:900px}.audit-table th{white-space:nowrap}.audit-time{white-space:nowrap}.audit-action{font-weight:700}.audit-detail{line-height:1.45}.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#e2e8f0;font-size:12px}.status-new{background:#fef3c7}.status-accepted{background:#dbeafe}.status-preparing{background:#ede9fe}.status-ready{background:#dcfce7}.status-delivered{background:#d1fae5}.status-cancelled,.status-declined{background:#fee2e2}.status-closed{background:#e5e7eb}.metric{font-size:24px;font-weight:700}.row-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.stickybar{position:sticky;bottom:8px;background:#fff;padding:10px;border-top:1px solid #e2e8f0}.compact{min-width:0!important}.money{text-align:right;white-space:nowrap}.warning{background:#fff7ed;color:#9a3412}.section-title{margin:8px 0}@media(max-width:700px){.tabs{position:static;width:100%;display:flex;gap:6px;padding:8px;overflow-x:auto}.tab{min-width:max-content;width:auto;text-align:left}.tab:before{width:20px}#adminView{padding-left:0}.wrap{padding:12px}}
+.customer-shell{max-width:1050px}
+.customer-header{gap:12px}
+.customer-menu-card,.customer-cart-card{min-width:0}
+.customer-menu-grid{grid-template-columns:2fr 1fr}
+.customer-menu-grid .customer-cart-card{height:max-content;position:sticky;top:12px}
+.customer-item-card{overflow:hidden}
+.customer-item-photo{width:90px;height:70px;object-fit:cover;border-radius:8px}
+.payment-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+.payment-summary .field{background:#f8fafc;border:1px solid #e2e8f0;border-radius:9px;padding:10px}
+.payment-summary .field b{display:block;margin-top:3px;word-break:break-word}
+@media(max-width:700px){
+  .customer-shell{padding:8px}
+  .customer-header{align-items:flex-start}
+  .customer-header .h1{font-size:23px}
+  .customer-menu-grid{grid-template-columns:1fr}
+  .customer-menu-grid .customer-cart-card{position:static}
+  .customer-menu-card,.customer-cart-card{padding:14px}
+  .customer-menu-card h2,.customer-cart-card h2{font-size:20px}
+  .customer-item-photo{width:76px;height:60px}
+  .payment-summary{grid-template-columns:1fr}
+  .customer-shell .input{font-size:16px;min-height:46px}
+  .customer-shell .btn{min-height:46px}
+}
+</style>
 <script>
 // Self-contained QR generator based on qrcode-terminal vendor/QRCode (MIT).
 (function(){
@@ -1262,12 +1286,27 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
 </section>
 
 <section id="customerView" class="hidden">
-  <div class="wrap" style="max-width:1050px">
-    <div class="card top"><div><div class="h1">RestaurantFlow</div><div class="muted">Order from your table</div></div><span id="customerTablePill" class="pill"></span></div>
+  <div class="wrap customer-shell">
+    <div class="card top customer-header"><div><div class="h1">RestaurantFlow</div><div class="muted">Order from your table</div></div><span id="customerTablePill" class="pill"></span></div>
     <div id="customerMsg" class="msg"></div>
-    <div class="grid" style="grid-template-columns:2fr 1fr">
-      <div class="card"><div class="top"><div><h2>Menu</h2><p class="muted">Available items are shown below.</p></div><select id="customerCategory" class="input" style="max-width:220px"><option value="">All categories</option></select></div><div id="customerMenu"></div></div>
-      <div class="card" style="height:max-content;position:sticky;top:12px"><h2>Your Cart</h2><div id="customerCart"></div><hr><div class="top"><b>Subtotal</b><b id="customerSubtotal">₹0</b></div><label>Tip</label><input id="customerTip" class="input" type="number" min="0" step="1" value="0"><label>Mobile number</label><input id="customerMobile" class="input" inputmode="numeric" placeholder="For order updates"><label>Payment timing</label><select id="customerPaymentTiming" class="input"><option value="postpaid">Pay later</option><option value="prepaid">Pay now</option></select><label>Payment method</label><select id="customerPayment" class="input"><option value="UPI">UPI</option><option value="Card">Card</option><option value="Cash">Cash / counter</option></select><div id="customerPaymentNote" class="small muted" style="margin:-5px 0 12px"></div><button id="placeCustomerOrderBtn" class="btn" style="width:100%">Confirm Order</button></div>
+    <div class="grid customer-menu-grid">
+      <div class="card customer-menu-card">
+        <div class="top"><div><h2>Menu</h2><p class="muted">Tap Add to build your order.</p></div><select id="customerCategory" class="input" style="max-width:220px"><option value="">All categories</option></select></div>
+        <div id="customerMenu"></div>
+      </div>
+      <div class="card customer-cart-card">
+        <h2>Your Cart</h2>
+        <div id="customerCart"></div><hr>
+        <div class="top"><b>Subtotal</b><b id="customerSubtotal">₹0</b></div>
+        <label>Tip</label><input id="customerTip" class="input" type="number" min="0" step="1" value="0" inputmode="decimal">
+        <label>Mobile number</label><input id="customerMobile" class="input" inputmode="numeric" autocomplete="tel" placeholder="For order updates">
+        <label>Payment timing</label><select id="customerPaymentTiming" class="input"><option value="postpaid">Pay later</option><option value="prepaid">Pay now</option></select>
+        <label>Payment method</label><select id="customerPayment" class="input"><option value="UPI">UPI</option><option value="Card">Card</option><option value="Cash">Cash / counter</option></select>
+        <label>Payment reference <span class="muted small">(optional)</span></label>
+        <input id="customerPaymentReference" class="input" placeholder="UPI / card reference if available" autocomplete="off">
+        <div id="customerPaymentNote" class="small muted" style="margin:-5px 0 12px"></div>
+        <button id="placeCustomerOrderBtn" class="btn" style="width:100%">Confirm Order</button>
+      </div>
     </div>
     <div id="customerOrderCard" class="card hidden"><div class="top"><div><h2>Order Tracking</h2><div id="customerOrderId" class="muted"></div></div><span id="customerOrderStatus" class="pill"></span></div><p class="muted">Keep this page open to see your order progress.</p></div>
   </div>
@@ -1739,8 +1778,67 @@ async function loadStaffPage(id){
   }
   if(id==='staffCollectionPage'){
    const arr=(await staffOrders()).filter(o=>o.status==='delivered' && o.paymentStatus!=='paid' && o.paymentStatus!=='closed');
-   $('staffCollectionPage').innerHTML=`<div class="card"><h2>Collection</h2><p class="muted">Record the actual payment received for a delivered order. Payment must match the current bill total.</p><div class="grid"><select id="staffPayMethod" class="input"><option>Cash</option><option>Card</option><option>UPI</option><option>Wallet</option><option>Other</option></select><select id="staffPayOrder" class="input">${arr.map(o=>{const total=Number(o.total??staffTotal(o))||0;return `<option value="${o.id}">${esc(o.orderNumber||o.id)} • Table ${esc(o.table||o.tableNumber||'—')} • ${formatMoney(total)}</option>`}).join('')}</select><input id="staffPayAmount" class="input" type="number" min="0" step="0.01" placeholder="Amount"><input id="staffPayTip" class="input" type="number" min="0" step="0.01" placeholder="Tip"><input id="staffPayRef" class="input" placeholder="Reference / UPI txn ID"></div><button id="staffRecordPay" class="btn" ${arr.length?'':'disabled'}>Record Payment</button><div id="staffPayMsg" class="msg"></div></div>`;
-   $('staffRecordPay').onclick=async()=>{try{const orderId=$('staffPayOrder').value,amount=Number($('staffPayAmount').value);const o=(await getDoc(doc(db,'orders',orderId))).data();if(!o)return msg($('staffPayMsg'),'Order not found.');const total=Math.max(0,Number(o.total??staffTotal(o))||0);const tip=Math.max(0,Number($('staffPayTip').value)||0);if(!orderId||!Number.isFinite(amount)||amount<=0)return msg($('staffPayMsg'),'Select an order and enter a valid amount.');if(Math.abs(amount-total)>0.009)return msg($('staffPayMsg'),`Payment must equal the bill total (${formatMoney(total)}).`);if(o.paymentStatus==='paid'||o.paymentStatus==='closed')return msg($('staffPayMsg'),'This order is already paid or closed.');const data={restaurantId:'demo',orderId,method:$('staffPayMethod').value,amount,tip,reference:$('staffPayRef').value.trim(),status:'paid',createdAt:serverTimestamp(),createdBy:currentUser.uid};const ref=await addDoc(collection(db,'payments'),data);await updateDoc(doc(db,'orders',orderId),{paymentStatus:'paid',paid:true,paymentMethod:data.method,paidAt:serverTimestamp(),paidAmount:amount,updatedBy:currentUser.uid});await addDoc(collection(db,'auditLogs'),{actorUid:currentUser.uid,actorEmail:currentUser.email||'',action:'payment_recorded',entity:'payment',details:{id:ref.id,orderId,method:data.method,amount,tip:data.tip},createdAt:serverTimestamp()});msg($('staffPayMsg'),'Payment recorded.','ok');await loadStaffPage('staffCollectionPage');}catch(e){msg($('staffPayMsg'),'Payment error: '+e.message)}};return;
+   $('staffCollectionPage').innerHTML=\`<div class="card"><div class="top"><div><h2>Collection</h2><p class="muted">Select a delivered order. Order ID, table, customer mobile, payment method, tip and customer reference are filled automatically.</p></div><span class="pill">\${arr.length} pending</span></div>
+   <div class="grid">
+     <div>
+       <label>Order</label>
+       <select id="staffPayOrder" class="input">\${arr.map(o=>{const total=Number(o.total??staffTotal(o))||0;return \\\`<option value="\${o.id}">\${esc(o.orderNumber||o.id)} • Table \${esc(o.table||o.tableNumber||'—')} • \${formatMoney(total)}</option>\\\`}).join('')}</select>
+       <div id="staffPaymentSummary" class="payment-summary"></div>
+     </div>
+     <div>
+       <label>Collection method</label>
+       <select id="staffPayMethod" class="input"><option>Cash</option><option>Card</option><option>UPI</option><option>Wallet</option><option>Other</option></select>
+       <label>Amount received</label>
+       <input id="staffPayAmount" class="input" type="number" min="0" step="0.01" inputmode="decimal">
+       <label>Tip</label>
+       <input id="staffPayTip" class="input" type="number" min="0" step="0.01" inputmode="decimal">
+       <label>Collection reference</label>
+       <input id="staffPayRef" class="input" placeholder="Transaction/reference ID">
+       <button id="staffRecordPay" class="btn" style="width:100%" \${arr.length?'':'disabled'}>Record Payment</button>
+     </div>
+   </div><div id="staffPayMsg" class="msg"></div></div>\`;
+   function fillStaffPaymentForm(){
+     const orderId=$('staffPayOrder')?.value;
+     const o=arr.find(x=>x.id===orderId);
+     if(!o)return;
+     const total=Math.max(0,Number(o.total??staffTotal(o))||0);
+     const customerTip=Math.max(0,Number(o.tip||0)||0);
+     const customerMethod=o.paymentMethod||'Cash';
+     const customerRef=o.paymentReference||'';
+     $('staffPayMethod').value=['Cash','Card','UPI','Wallet','Other'].includes(customerMethod)?customerMethod:'Other';
+     $('staffPayAmount').value=total.toFixed(2);
+     $('staffPayTip').value=customerTip.toFixed(2);
+     $('staffPayRef').value=customerRef || (o.orderNumber||o.id);
+     $('staffPaymentSummary').innerHTML=\`
+       <div class="field"><span class="small muted">Order ID</span><b>\${esc(o.orderNumber||o.id)}</b></div>
+       <div class="field"><span class="small muted">Table</span><b>\${esc(o.table||o.tableNumber||'—')}</b></div>
+       <div class="field"><span class="small muted">Customer mobile</span><b>\${esc(o.mobile||o.customerMobile||'—')}</b></div>
+       <div class="field"><span class="small muted">Customer payment choice</span><b>\${esc(customerMethod)}</b></div>
+       <div class="field"><span class="small muted">Customer tip</span><b>\${formatMoney(customerTip)}</b></div>
+       <div class="field"><span class="small muted">Customer reference</span><b>\${esc(customerRef||'—')}</b></div>
+       <div class="field"><span class="small muted">Bill total</span><b>\${formatMoney(total)}</b></div>
+     \`;
+   }
+   if(arr.length)fillStaffPaymentForm();
+   $('staffPayOrder').onchange=fillStaffPaymentForm;
+   $('staffRecordPay').onclick=async()=>{try{
+     const orderId=$('staffPayOrder').value;
+     const amount=Number($('staffPayAmount').value);
+     const o=(await getDoc(doc(db,'orders',orderId))).data();
+     if(!o)return msg($('staffPayMsg'),'Order not found.');
+     const total=Math.max(0,Number(o.total??staffTotal(o))||0);
+     const tip=Math.max(0,Number($('staffPayTip').value)||0);
+     const method=$('staffPayMethod').value;
+     const reference=$('staffPayRef').value.trim();
+     if(!orderId||!Number.isFinite(amount)||amount<=0)return msg($('staffPayMsg'),'Select an order and enter a valid amount.');
+     if(Math.abs(amount-total)>0.009)return msg($('staffPayMsg'),\`Payment must equal the bill total (\${formatMoney(total)}).\`);
+     if(o.paymentStatus==='paid'||o.paymentStatus==='closed')return msg($('staffPayMsg'),'This order is already paid or closed.');
+     const data={restaurantId:'demo',orderId,method,amount,tip,reference,status:'paid',customerMobile:o.mobile||o.customerMobile||'',customerPaymentMethod:o.paymentMethod||'',customerPaymentReference:o.paymentReference||'',tableId:o.tableId||'',table:o.table||o.tableNumber||'',createdAt:serverTimestamp(),createdBy:currentUser.uid};
+     const ref=await addDoc(collection(db,'payments'),data);
+     await updateDoc(doc(db,'orders',orderId),{paymentStatus:'paid',paid:true,paymentMethod:method,paidAt:serverTimestamp(),paidAmount:amount,paymentReference:reference,updatedBy:currentUser.uid});
+     await addDoc(collection(db,'auditLogs'),{actorUid:currentUser.uid,actorEmail:currentUser.email||'',action:'payment_recorded',entity:'payment',details:{id:ref.id,orderId,method,amount,tip,reference},createdAt:serverTimestamp()});
+     msg($('staffPayMsg'),'Payment recorded.','ok');await loadStaffPage('staffCollectionPage');
+   }catch(e){msg($('staffPayMsg'),'Payment error: '+e.message)}};return;
   }
  }catch(e){msg($('staffMsg'),'Unable to load: '+e.message)}
 }
@@ -1766,7 +1864,7 @@ function renderCustomerPaymentOptions(){
  else {note.textContent='The order can be sent first and payment can be collected later at the restaurant.';$('customerPayment').innerHTML='<option value="Cash">Cash / counter</option><option value="UPI">UPI</option><option value="Card">Card</option>'; $('placeCustomerOrderBtn').textContent='Confirm Order';}
 }
 async function loadCustomerMenu(){
- try{const cat=$('customerCategory').value;const arr=(await getDocs(collection(db,'menuItems'))).docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.active!==false&&x.available!==false&&(x.categoryId===cat||!cat));$('customerMenu').innerHTML=arr.map(x=>`<div class="card" style="background:#f8fafc"><div class="top"><div><h3 style="margin:0">${esc(x.name)}</h3><div class="small muted">${esc(x.foodType||'Other')} • ${formatMoney(x.price)}</div><div class="small">${esc(x.description||'')}</div></div>${x.imageData?`<img src="${x.imageData}" style="width:90px;height:70px;object-fit:cover;border-radius:8px">`:''}</div><div class="row-actions"><button class="btn" data-add-cart="${x.id}">Add</button></div></div>`).join('')||'<p class="muted">No available items.</p>';$('customerMenu').onclick=e=>{const b=e.target.closest('[data-add-cart]');if(!b)return;const id=b.dataset.addCart;const item=arr.find(x=>x.id===id);if(!item)return;const found=customerCart.find(x=>x.id===id);if(found)found.qty++;else customerCart.push({...item,qty:1});renderCustomerCart()};
+ try{const cat=$('customerCategory').value;const arr=(await getDocs(collection(db,'menuItems'))).docs.map(d=>({id:d.id,...d.data()})).filter(x=>x.active!==false&&x.available!==false&&(x.categoryId===cat||!cat));$('customerMenu').innerHTML=arr.map(x=>`<div class="card customer-item-card" style="background:#f8fafc"><div class="top"><div><h3 style="margin:0">${esc(x.name)}</h3><div class="small muted">${esc(x.foodType||'Other')} • ${formatMoney(x.price)}</div><div class="small">${esc(x.description||'')}</div></div>${x.imageData?`<img src="${x.imageData}" class="customer-item-photo">`:''}</div><div class="row-actions"><button class="btn" data-add-cart="${x.id}">Add</button></div></div>`).join('')||'<p class="muted">No available items.</p>';$('customerMenu').onclick=e=>{const b=e.target.closest('[data-add-cart]');if(!b)return;const id=b.dataset.addCart;const item=arr.find(x=>x.id===id);if(!item)return;const found=customerCart.find(x=>x.id===id);if(found)found.qty++;else customerCart.push({...item,qty:1});renderCustomerCart()};
  }catch(e){$('customerMenu').textContent='Unable to load menu: '+e.message}
 }
 function renderCustomerCart(){const sub=customerCart.reduce((a,x)=>a+Number(x.price||0)*x.qty,0),tip=Number($('customerTip').value)||0;$('customerSubtotal').textContent=formatMoney(sub);$('customerCart').innerHTML=customerCart.map(x=>`<div class="top" style="padding:7px 0;border-bottom:1px solid #e2e8f0"><div><b>${esc(x.name)}</b><div class="small">${formatMoney(x.price)} × ${x.qty}</div></div><div class="row-actions"><button class="btn light" data-cart-minus="${x.id}">−</button><button class="btn light" data-cart-plus="${x.id}">+</button></div></div>`).join('')||'<p class="muted">Cart is empty.</p>';$('customerCart').onclick=e=>{const plus=e.target.closest('[data-cart-plus]'),minus=e.target.closest('[data-cart-minus]');if(plus){customerCart.find(x=>x.id===plus.dataset.cartPlus).qty++}if(minus){const x=customerCart.find(x=>x.id===minus.dataset.cartMinus);if(x){x.qty--;if(x.qty<=0)customerCart=customerCart.filter(y=>y.id!==x.id)}}renderCustomerCart()};}
@@ -1775,7 +1873,7 @@ async function placeCustomerOrder(){
  if(!customerCart.length)return msg($('customerMsg'),'Add at least one item.');const mobile=$('customerMobile').value.trim();if(!mobile)return msg($('customerMsg'),'Enter your mobile number.');if(!currentUser)return msg($('customerMsg'),'Please wait a moment and try again.');
  const timing=$('customerPaymentTiming').value||'postpaid';
  if(timing==='prepaid')return msg($('customerMsg'),'Pre-payment is enabled for this restaurant, but no verified online payment gateway is connected yet. Connect the gateway before accepting real pre-payments.');
- try{const subtotal=customerCart.reduce((a,x)=>a+Number(x.price||0)*x.qty,0),tip=Number($('customerTip').value)||0;const order={restaurantId:'demo',tableId:customerTableId,table:customerTable,mobile,customerUid:currentUser.uid,items:customerCart.map(x=>({id:x.id,name:x.name,price:Number(x.price)||0,qty:x.qty,foodType:x.foodType||'Other'})),subtotal,discount:0,tax:0,tip,total:subtotal+tip,status:'new',paymentStatus:'pending',paymentTiming:'postpaid',paymentMethod:$('customerPayment').value,createdAt:serverTimestamp()};const ref=await addDoc(collection(db,'orders'),order);customerOrderId=ref.id;customerCart=[];renderCustomerCart();$('customerOrderCard').classList.remove('hidden');$('customerOrderId').textContent='Order ID: '+ref.id;$('customerOrderStatus').textContent='new';msg($('customerMsg'),'Order placed successfully. Payment will be collected later.','ok');startCustomerPolling();}catch(e){msg($('customerMsg'),'Order could not be placed: '+(e.code||e.message))}
+ try{const subtotal=customerCart.reduce((a,x)=>a+Number(x.price||0)*x.qty,0),tip=Number($('customerTip').value)||0;const order={restaurantId:'demo',tableId:customerTableId,table:customerTable,mobile,customerUid:currentUser.uid,items:customerCart.map(x=>({id:x.id,name:x.name,price:Number(x.price)||0,qty:x.qty,foodType:x.foodType||'Other'})),subtotal,discount:0,tax:0,tip,total:subtotal+tip,status:'new',paymentStatus:'pending',paymentTiming:'postpaid',paymentMethod:$('customerPayment').value,paymentReference:($('customerPaymentReference')?.value||'').trim(),createdAt:serverTimestamp()};const ref=await addDoc(collection(db,'orders'),order);customerOrderId=ref.id;customerCart=[];renderCustomerCart();$('customerOrderCard').classList.remove('hidden');$('customerOrderId').textContent='Order ID: '+ref.id;$('customerOrderStatus').textContent='new';msg($('customerMsg'),'Order placed successfully. Payment will be collected later.','ok');startCustomerPolling();}catch(e){msg($('customerMsg'),'Order could not be placed: '+(e.code||e.message))}
 }
 function startCustomerPolling(){if(customerPoll)clearInterval(customerPoll);customerPoll=setInterval(async()=>{if(!customerOrderId)return;try{const s=await getDoc(doc(db,'orders',customerOrderId));if(s.exists()){$('customerOrderStatus').textContent=s.data().status||'new'}}catch(e){}},5000)}
 
