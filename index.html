@@ -1778,11 +1778,11 @@ async function loadStaffPage(id){
   }
   if(id==='staffCollectionPage'){
    const arr=(await staffOrders()).filter(o=>o.status==='delivered' && o.paymentStatus!=='paid' && o.paymentStatus!=='closed');
-   $('staffCollectionPage').innerHTML=\`<div class="card"><div class="top"><div><h2>Collection</h2><p class="muted">Select a delivered order. Order ID, table, customer mobile, payment method, tip and customer reference are filled automatically.</p></div><span class="pill">\${arr.length} pending</span></div>
+   $('staffCollectionPage').innerHTML=`<div class="card"><div class="top"><div><h2>Collection</h2><p class="muted">Select a delivered order. Order ID, table, customer mobile, payment method, tip and customer reference are filled automatically.</p></div><span class="pill">${arr.length} pending</span></div>
    <div class="grid">
      <div>
        <label>Order</label>
-       <select id="staffPayOrder" class="input">\${arr.map(o=>{const total=Number(o.total??staffTotal(o))||0;return \\\`<option value="\${o.id}">\${esc(o.orderNumber||o.id)} • Table \${esc(o.table||o.tableNumber||'—')} • \${formatMoney(total)}</option>\\\`}).join('')}</select>
+       <select id="staffPayOrder" class="input">${arr.map(o=>{const total=Number(o.total??staffTotal(o))||0;return \\`<option value="${o.id}">${esc(o.orderNumber||o.id)} • Table ${esc(o.table||o.tableNumber||'—')} • ${formatMoney(total)}</option>\\`}).join('')}</select>
        <div id="staffPaymentSummary" class="payment-summary"></div>
      </div>
      <div>
@@ -1794,9 +1794,9 @@ async function loadStaffPage(id){
        <input id="staffPayTip" class="input" type="number" min="0" step="0.01" inputmode="decimal">
        <label>Collection reference</label>
        <input id="staffPayRef" class="input" placeholder="Transaction/reference ID">
-       <button id="staffRecordPay" class="btn" style="width:100%" \${arr.length?'':'disabled'}>Record Payment</button>
+       <button id="staffRecordPay" class="btn" style="width:100%" ${arr.length?'':'disabled'}>Record Payment</button>
      </div>
-   </div><div id="staffPayMsg" class="msg"></div></div>\`;
+   </div><div id="staffPayMsg" class="msg"></div></div>`;
    function fillStaffPaymentForm(){
      const orderId=$('staffPayOrder')?.value;
      const o=arr.find(x=>x.id===orderId);
@@ -1809,15 +1809,15 @@ async function loadStaffPage(id){
      $('staffPayAmount').value=total.toFixed(2);
      $('staffPayTip').value=customerTip.toFixed(2);
      $('staffPayRef').value=customerRef || (o.orderNumber||o.id);
-     $('staffPaymentSummary').innerHTML=\`
-       <div class="field"><span class="small muted">Order ID</span><b>\${esc(o.orderNumber||o.id)}</b></div>
-       <div class="field"><span class="small muted">Table</span><b>\${esc(o.table||o.tableNumber||'—')}</b></div>
-       <div class="field"><span class="small muted">Customer mobile</span><b>\${esc(o.mobile||o.customerMobile||'—')}</b></div>
-       <div class="field"><span class="small muted">Customer payment choice</span><b>\${esc(customerMethod)}</b></div>
-       <div class="field"><span class="small muted">Customer tip</span><b>\${formatMoney(customerTip)}</b></div>
-       <div class="field"><span class="small muted">Customer reference</span><b>\${esc(customerRef||'—')}</b></div>
-       <div class="field"><span class="small muted">Bill total</span><b>\${formatMoney(total)}</b></div>
-     \`;
+     $('staffPaymentSummary').innerHTML=`
+       <div class="field"><span class="small muted">Order ID</span><b>${esc(o.orderNumber||o.id)}</b></div>
+       <div class="field"><span class="small muted">Table</span><b>${esc(o.table||o.tableNumber||'—')}</b></div>
+       <div class="field"><span class="small muted">Customer mobile</span><b>${esc(o.mobile||o.customerMobile||'—')}</b></div>
+       <div class="field"><span class="small muted">Customer payment choice</span><b>${esc(customerMethod)}</b></div>
+       <div class="field"><span class="small muted">Customer tip</span><b>${formatMoney(customerTip)}</b></div>
+       <div class="field"><span class="small muted">Customer reference</span><b>${esc(customerRef||'—')}</b></div>
+       <div class="field"><span class="small muted">Bill total</span><b>${formatMoney(total)}</b></div>
+     `;
    }
    if(arr.length)fillStaffPaymentForm();
    $('staffPayOrder').onchange=fillStaffPaymentForm;
@@ -1831,7 +1831,7 @@ async function loadStaffPage(id){
      const method=$('staffPayMethod').value;
      const reference=$('staffPayRef').value.trim();
      if(!orderId||!Number.isFinite(amount)||amount<=0)return msg($('staffPayMsg'),'Select an order and enter a valid amount.');
-     if(Math.abs(amount-total)>0.009)return msg($('staffPayMsg'),\`Payment must equal the bill total (\${formatMoney(total)}).\`);
+     if(Math.abs(amount-total)>0.009)return msg($('staffPayMsg'),`Payment must equal the bill total (${formatMoney(total)}).`);
      if(o.paymentStatus==='paid'||o.paymentStatus==='closed')return msg($('staffPayMsg'),'This order is already paid or closed.');
      const data={restaurantId:'demo',orderId,method,amount,tip,reference,status:'paid',customerMobile:o.mobile||o.customerMobile||'',customerPaymentMethod:o.paymentMethod||'',customerPaymentReference:o.paymentReference||'',tableId:o.tableId||'',table:o.table||o.tableNumber||'',createdAt:serverTimestamp(),createdBy:currentUser.uid};
      const ref=await addDoc(collection(db,'payments'),data);
