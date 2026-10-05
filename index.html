@@ -231,6 +231,30 @@ details.more-status{margin-top:8px;flex-basis:100%}details.more-status summary{c
 .tally{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.tally-chip{background:var(--soft);border-radius:999px;padding:5px 11px;font-size:14px}
 .logo-prev{height:70px;max-width:200px;object-fit:contain;border:1px solid var(--line);border-radius:10px;padding:4px;background:#fff;display:block;margin:6px 0}
 @media print{.snd-btn,#rfToasts,.cart-bar,.calls-bar{display:none!important}}
+
+/* ===== V5.9: calmer cards, simpler fonts, sidebar brand, chips ===== */
+#adminView,#staffView{--serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.tabs::before{content:none!important;display:none!important}
+.side-brand{display:flex;align-items:center;gap:10px;margin:2px 6px 18px;color:var(--saffron);font-weight:700;font-size:18px;line-height:1.2;overflow-wrap:anywhere}
+.side-brand .brand-logo{height:40px;width:40px;max-width:none;flex:none;padding:2px;border-radius:10px}
+@media(max-width:700px){.side-brand{display:none}}
+#dashboardTab>.grid>.card:nth-child(1),.grid>.card:has(>.metric):nth-child(4n+1){background:#F0E7CF}
+#dashboardTab>.grid>.card:nth-child(2),.grid>.card:has(>.metric):nth-child(4n+2){background:#D7E5DA}
+#dashboardTab>.grid>.card:nth-child(3),.grid>.card:has(>.metric):nth-child(4n+3){background:#EAD7DC}
+.grid>.card:has(>.metric):nth-child(4n+4){background:#DCD8EA}
+#dashboardTab>.grid>.card,.card:has(>.metric){color:#2f2a3a;box-shadow:0 4px 14px -10px rgba(43,19,70,.35)!important}
+#dashboardTab>.grid>.card .h1,.metric{font-size:30px;font-weight:600;letter-spacing:0;color:#2f2a3a}
+.rep-card b{font-weight:600}.rep-card .small{color:#5d566b}
+#dashCards,#tableCards{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.range-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.range-bar .input{margin-bottom:6px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;min-height:40px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.danger{background:#F1DADA;color:#8F2B2B}
+.pick{max-height:92vh;overflow:auto}.pick-list{margin:8px 0}
+.pick-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:16px}
+.pick-row input{width:22px;height:22px}
+.sum-detail .rep-detail{margin-top:12px}
+.rf-modal{--serif:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
 </style>
 <script>
 // Self-contained QR generator based on qrcode-terminal vendor/QRCode (MIT).
@@ -1534,7 +1558,7 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
 <section id="adminView" class="hidden">
 <div class="card top"><div style="display:flex;gap:12px;align-items:center"><img class="brand-logo hidden" alt=""><div><div class="h1">Admin <span class="brand-name">RestaurantFlow</span></div><div id="profile" class="muted"></div></div></div><button id="signOutBtn" class="btn secondary">Sign out</button></div>
 <div id="adminMsg" class="msg"></div>
-<div class="tabs">
+<div class="tabs"><div class="side-brand"><img class="brand-logo hidden" alt=""><span class="brand-name">RestaurantFlow</span></div>
 <button class="tab active" data-tab="dashboard">Dashboard</button>
 <button class="tab" data-tab="import">Bulk Import</button>
 <button class="tab" data-tab="menu">Menu Manager</button>
@@ -1551,9 +1575,9 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
 </div>
 <div id="dashboardTab" class="tabbody">
 <div class="grid">
-<div class="card"><b>Menu items</b><div id="statMenu" class="h1">—</div></div>
-<div class="card"><b>Categories</b><div id="statCat" class="h1">—</div></div>
-<div class="card"><b>Staff</b><div id="statStaff" class="h1">—</div></div>
+<button type="button" class="card rep-card" data-goto-tab="menu"><b>Menu items</b><div id="statMenu" class="h1">—</div></button>
+<button type="button" class="card rep-card" data-goto-tab="categories"><b>Categories</b><div id="statCat" class="h1">—</div></button>
+<button type="button" class="card rep-card" data-goto-tab="staff"><b>Staff</b><div id="statStaff" class="h1">—</div></button>
 </div>
 <div class="card"><h2>Admin control centre</h2><p class="muted">You can edit menu items, prices, photos, availability, categories, offers, tables, staff roles/rights, bulk staff setup, restaurant settings and audit records from this admin account.</p><button id="grantAllBtn" class="btn">Enable all admin permissions</button><div id="grantMsg" class="msg"></div></div>
 </div>
@@ -1913,7 +1937,7 @@ function tsMs(v){return v&&v.toMillis?v.toMillis():(v&&v.toDate?v.toDate().getTi
 function rupee(n){n=Number(n)||0;return '₹'+(Number.isInteger(n)?n:n.toFixed(2))}
 function custLine(o,skipMobile){const b=[],m=o.mobile||o.customerMobile,t=Number(o.tip||o.tipAmount||0)||0;if(m&&!skipMobile)b.push('📱 '+esc(m));const sw=stewardOf(o);if(sw)b.push('Steward '+esc(sw));if(o.paymentMethod)b.push('Pays by '+esc(o.paymentMethod));if(o.paymentReference)b.push('Ref '+esc(o.paymentReference));if(t>0)b.push('Tip '+formatMoney(t));return b.length?`<div class="small cust-line">${b.join(' • ')}</div>`:''}
 function payCustLine(p){const b=[];if(p.table)b.push('Table '+esc(p.table));if(p.customerMobile)b.push('📱 '+esc(p.customerMobile));if(p.customerPaymentMethod)b.push('Customer chose '+esc(p.customerPaymentMethod));if(p.customerPaymentReference)b.push('Customer ref '+esc(p.customerPaymentReference));return b.length?`<div class="small muted">${b.join(' • ')}</div>`:''}
-function orderActionsHTML(o){const s=o.status||'new',paid=o.paymentStatus==='paid'||o.paymentStatus==='closed',id=esc(o.id);const nx={new:[['accepted','Accept'],['declined','Decline']],accepted:[['preparing','Start preparing']],preparing:[['ready','Mark ready']],ready:[['delivered','Mark delivered']]}[s]||[];let h=nx.map((n,i)=>`<button class="btn${i?' light':''}" data-order-status="${n[0]}" data-order-id="${id}">${n[1]}</button>`).join('');if(s==='delivered'&&!paid)h+=`<button class="btn" data-collect-order="${id}">Collect payment</button>`;if(s==='delivered'&&paid)h+=`<button class="btn" data-goto-tab="billing">Close bill</button>`;h+=`<button class="btn light" data-print-kot="${id}">🖨 KOT</button><button class="btn light" data-print-bill="${id}">🖨 Bill</button><button class="btn light" data-move-table="${id}">Move table</button>`;return h+`<details class="more-status"><summary>More</summary><div class="row-actions">${STATUS_FLOW.map(x=>`<button class="btn light" data-order-status="${esc(x)}" data-order-id="${id}">${esc(x)}</button>`).join('')}</div></details>`}
+function orderActionsHTML(o){const s=o.status||'new',paid=o.paymentStatus==='paid'||o.paymentStatus==='closed',id=esc(o.id);const nx={new:[['accepted','Accept'],['declined','Decline']],accepted:[['preparing','Start preparing']],preparing:[['ready','Mark ready']],ready:[['delivered','Mark delivered']]}[s]||[];let h=nx.map((n,i)=>`<button class="btn${i?' light':''}" data-order-status="${n[0]}" data-order-id="${id}">${n[1]}</button>`).join('');if(s==='delivered'&&!paid)h+=`<button class="btn" data-collect-order="${id}">Collect payment</button>`;if(s==='delivered'&&paid)h+=`<button class="btn" data-goto-tab="billing">Close bill</button>`;if(s==='new')h+=`<button class="btn light" data-pick-items="${id}">Pick items</button>`;h+=`<button class="btn light" data-print-kot="${id}">🖨 KOT</button><button class="btn light" data-print-bill="${id}">🖨 Bill</button><button class="btn light" data-move-table="${id}">Move table</button>`;return h+`<details class="more-status"><summary>More</summary><div class="row-actions">${STATUS_FLOW.map(x=>`<button class="btn light" data-order-status="${esc(x)}" data-order-id="${id}">${esc(x)}</button>`).join('')}</div></details>`}
 async function loadCollectOptions(pick){try{const s=await getDocs(collection(db,'orders'));const arr=s.docs.map(d=>({id:d.id,...d.data()})).filter(o=>o.status==='delivered'&&o.paymentStatus!=='paid'&&o.paymentStatus!=='closed').sort((a,b)=>tsMs(b.createdAt)-tsMs(a.createdAt));window.__collectOrders=arr;const sel=$('paymentOrderPick');sel.innerHTML='<option value="">Select a delivered order…</option>'+arr.map(o=>`<option value="${esc(o.id)}">${esc(orderLabel(o))} • ${formatMoney(orderTotal(o))} • ${esc(o.mobile||o.customerMobile||'no mobile')}</option>`).join('');if(pick&&arr.some(o=>o.id===pick))sel.value=pick;fillAdminCollect()}catch(e){msg($('paymentMsg'),'Unable to load delivered orders: '+e.message)}}
 function fillAdminCollect(){const o=(window.__collectOrders||[]).find(x=>x.id===$('paymentOrderPick').value),box=$('adminPaymentSummary');if(!o){box.innerHTML='<p class="muted small">Pick an order and its table, mobile, payment choice, tip, reference and total fill in automatically.</p>';return}
  const total=Math.max(0,Number(o.total??orderTotal(o))||0),tip=Math.max(0,Number(o.tip||0)||0),cm=o.paymentMethod||'Cash',items=orderItems(o).map(i=>Number(i.qty||i.quantity||1)+' × '+(i.name||i.itemName||'Item')).join(', ')||'—';
@@ -2255,9 +2279,7 @@ const itemName=i=>i.name||i.itemName||'Item';
 /* ---- brand, GST + UPI settings, logo ---- */
 async function loadBrand(){try{const s=await getDoc(doc(db,'restaurants','demo'));const x=s.exists()?s.data():{};RF.brand=x;
  RF.gst={enabled:x.taxEnabled===true&&Number(x.taxRate)>0,rate:Number(x.taxRate)||0,mode:x.taxMode==='inclusive'?'inclusive':'exclusive',roundOff:x.roundOff!==false};
- document.querySelectorAll('.brand-logo').forEach(i=>{if(x.logoData){i.src=x.logoData;i.classList.remove('hidden')}else i.classList.add('hidden')});
- document.querySelectorAll('.brand-name').forEach(n=>n.textContent=x.name||'RestaurantFlow');
- if(x.name)document.title=x.name;
+ paintBrand();
  if(isCustomerMode)renderCustomerCart()}catch(e){console.warn('brand',e)}}
 RF.ready=loadBrand();
 function logoToData(file){return new Promise((res,rej)=>{const img=new Image(),u=URL.createObjectURL(file);img.onload=()=>{const k=Math.min(1,360/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*k));c.height=Math.max(1,Math.round(img.height*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);let q=.9,d;do{d=c.toDataURL('image/jpeg',q);q-=.1}while(d.length>140000&&q>.3);d.length>180000?rej(new Error('Logo is too large. Use a simpler image.')):res(d)};img.onerror=()=>rej(new Error('This file is not a readable image.'));img.src=u})}
@@ -2304,8 +2326,8 @@ function rfAfterPay(id){toast('Payment recorded.',{action:'Print bill',fn:()=>do
 /* ---- table transfer ---- */
 async function moveTable(id){try{const o=await fetchOrder(id);if(!o)return;const ts=(await getDocs(collection(db,'tables'))).docs.map(d=>({id:d.id,...d.data()})).filter(t=>t.active!==false).sort((a,b)=>String(a.name).localeCompare(String(b.name),undefined,{numeric:true}));
  const v=await pickModal(`Move order ${orderLabel(o)} (now table ${o.table||'—'}) to:`,ts.map(t=>({v:t.id,l:t.name})),o.tableId);if(!v||v===o.tableId)return;const t=ts.find(x=>x.id===v);
- await updateDoc(doc(db,'orders',id),{tableId:t.id,table:t.name,movedFrom:o.table||'',updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});
- await addDoc(collection(db,'auditLogs'),{actorUid:auth.currentUser.uid,actorEmail:auth.currentUser.email||'',action:'table_transfer',entity:'order',details:{id,from:o.table||'',to:t.name},createdAt:serverTimestamp()});toast(`Moved to table ${t.name}.`);refreshCurrent()}catch(e){toast('Could not move table: '+(e.code||e.message))}}
+ await updateDoc(doc(db,'orders',id),{tableId:t.id,table:t.name,movedFrom:o.table||'',updatedAt:serverTimestamp(),updatedBy:currentUser.uid});
+ await addDoc(collection(db,'auditLogs'),{actorUid:currentUser.uid,actorEmail:currentUser.email||'',action:'table_transfer',entity:'order',details:{id,from:o.table||'',to:t.name},createdAt:serverTimestamp()});toast(`Moved to table ${t.name}.`);refreshCurrent()}catch(e){toast('Could not move table: '+(e.code||e.message))}}
 
 /* ---- status stamps (for kitchen timing) ---- */
 staffSetStatus=async function(id,status){try{const prev=RF.st[id]||'';await updateDoc(doc(db,'orders',id),{status,[status+'At']:serverTimestamp(),updatedAt:serverTimestamp(),updatedBy:currentUser.uid});await addDoc(collection(db,'auditLogs'),{actorUid:currentUser.uid,actorEmail:currentUser.email||'',action:'order_status_change',entity:'order',details:{id,status,previousStatus:prev},createdAt:serverTimestamp()});refreshCurrent()}catch(e){msg($('staffMsg'),'Unable to update order: '+(e.code||e.message))}};
@@ -2363,7 +2385,7 @@ setInterval(()=>{document.querySelectorAll('[data-since]').forEach(el=>{const ms
 let liveUnsubs=[];
 function stopLive(){liveUnsubs.forEach(u=>{try{u()}catch(e){}});liveUnsubs=[];RF.st={};RF.reqs=[];document.querySelectorAll('.calls-bar,.snd-btn').forEach(x=>x.remove())}
 const SVC_LABEL={steward:'Call steward',water:'Water please',bill:'Bill please'};
-function myTables(){const uid=auth.currentUser&&auth.currentUser.uid;return Object.values(tblInfo).filter(t=>t.stewardUid===uid).map(t=>t.id)}
+function myTables(){const uid=currentUser&&currentUser.uid;return Object.values(tblInfo).filter(t=>t.stewardUid===uid).map(t=>t.id)}
 function forMe(role,tableId){if(role==='admin')return true;if(role==='steward'){const m=myTables();return !m.length||m.includes(tableId)}return false}
 function renderCalls(){const role=RF.role;if(!role)return;const now=Date.now();
  const list=RF.reqs.filter(r=>now-tsMs(r.createdAt||{toMillis:()=>now})<10800000||!r.createdAt).filter(r=>role==='admin'||(role==='steward'&&forMe(role,r.tableId))||(role==='billDesk'&&r.type==='bill')).sort((a,b)=>tsMs(a.createdAt)-tsMs(b.createdAt));
@@ -2404,10 +2426,9 @@ async function exportCSV(kind,from,to,withMobile){
   downloadCSV(`orders_${from}_${to}.csv`,head,os.map(o=>{const d=o.createdAt&&o.createdAt.toDate?o.createdAt.toDate():null,r=[d?localISO(d):'',d?d.toLocaleTimeString('en-IN'):'',orderLabel(o),o.table||'',o.source||'qr',o.status||'',orderItems(o).map(i=>itemQty(i)+'x '+itemName(i)).join('; '),o.subtotal??'',o.discount||0,o.cgst??(Number(o.tax)||0)/2,o.sgst??(Number(o.tax)||0)/2,o.roundOff||0,o.tip||0,orderTotal(o),o.paymentStatus||'',o.paymentMethod||'',o.note||''];if(withMobile)r.push(o.mobile||'');return r}))
  }catch(e){toast('Export failed: '+(e.code||e.message))}}
 function mountAdminExtras(){if($('adminDaySummary'))return;
- $('dashboardTab').insertAdjacentHTML('beforeend','<div class="card"><div class="top"><h2>Today at a glance</h2><div><input id="adminDayDate" class="input" type="date" style="margin:0"></div></div><div id="adminDaySummary"></div></div>');
- $('adminDayDate').value=localISO(new Date());$('adminDayDate').onchange=()=>renderDayInto($('adminDaySummary'),$('adminDayDate').value||localISO(new Date()),true);
+ $('dashboardTab').insertAdjacentHTML('beforeend','<div class="card"><h2>Business summary</h2><div id="adminDaySummary"></div></div>');
  $('reportsTab').insertAdjacentHTML('beforeend','<div class="card"><h2>Export to Excel (CSV)</h2><p class="muted">Uses the From / To dates above. Files open directly in Excel or Google Sheets.</p><label class="small"><input type="checkbox" id="csvMobile"> Include customer mobile numbers <span class="muted">(personal data — keep the file private)</span></label><div class="row-actions" style="margin-top:10px"><button class="btn light" data-csv="orders" data-scope="range">⬇ Orders (with GST)</button><button class="btn light" data-csv="payments" data-scope="range">⬇ Payments</button><button class="btn light" data-csv="items" data-scope="range">⬇ Items sold</button></div></div>');
- document.querySelector('.tab[data-tab="dashboard"]').addEventListener('click',()=>renderDayInto($('adminDaySummary'),$('adminDayDate').value||localISO(new Date()),true))}
+ document.querySelector('.tab[data-tab="dashboard"]').addEventListener('click',()=>{const e=$('adminDaySummary');e&&e._reload&&e._reload()})}
 
 /* ---- global click actions ---- */
 document.addEventListener('click',async e=>{
@@ -2415,7 +2436,7 @@ document.addEventListener('click',async e=>{
  if(k)doPrint('kot',k.dataset.printKot);if(b)doPrint('bill',b.dataset.printBill);if(mv)moveTable(mv.dataset.moveTable);
  if(cb&&RF.lastOrder)printHTML(billHTML(RF.lastOrder));
  if(sn){RF.soundOn=!RF.soundOn;sn.textContent=RF.soundOn?'🔔 Sound on':'🔕 Sound off';if(RF.soundOn)beep()}
- if(dn){dn.disabled=true;try{await updateDoc(doc(db,'serviceRequests',dn.dataset.svcDone),{status:'done',doneBy:auth.currentUser.uid,doneAt:serverTimestamp()})}catch(err){dn.disabled=false;toast('Could not update: '+(err.code||err.message))}}
+ if(dn){dn.disabled=true;try{await updateDoc(doc(db,'serviceRequests',dn.dataset.svcDone),{status:'done',doneBy:currentUser.uid,doneAt:serverTimestamp()})}catch(err){dn.disabled=false;toast('Could not update: '+(err.code||err.message))}}
  if(cv){const from=cv.dataset.from||$('reportFrom').value,to=cv.dataset.to||$('reportTo').value;exportCSV(cv.dataset.csv,from,to,cv.dataset.scope==='range'&&$('csvMobile')&&$('csvMobile').checked)}
  const sv=e.target.closest('[data-svc]');
  if(sv&&isCustomerMode){const t=sv.dataset.svc,now=Date.now();if(!customerTableId||!currentUser)return msg($('customerMsg'),'Please wait a moment and try again.');if(RF.svcAt[t]&&now-RF.svcAt[t]<60000)return msg($('customerMsg'),'We already told the team. Please wait a minute before asking again.','ok');
@@ -2461,8 +2482,8 @@ function paintTrack(o){
  const st=o.status||'new',bad=['declined','cancelled'].includes(st),idx=st==='closed'?4:STEP_FLOW.indexOf(st),paid=['paid','closed'].includes(o.paymentStatus);
  $('customerOrderStatus').textContent=({new:'Order placed',accepted:'Accepted',preparing:'Being prepared',ready:'Ready – coming to your table',delivered:'Served',declined:'Declined',cancelled:'Cancelled',closed:'Completed'})[st]||st;
  $('custSteps').innerHTML=bad?`<div class="msg error" style="display:block">${st==='declined'?'Sorry, the restaurant could not accept this order. Please speak to the steward.':'This order was cancelled.'}</div>`:STEP_FLOW.map((f,i)=>`<div class="step${i<=idx?' done':''}${i===idx?' now':''}"><i>${i<idx?'✓':i+1}</i><span>${STEP_LABEL[i]}</span></div>`).join('');
- let h='';if(paid)h='<div class="msg ok" style="display:block">Payment received. Thank you!</div>';
- else if(!bad&&RF.brand.upiId&&(st==='delivered'||o.paymentMethod==='UPI'))h=`<a class="btn upi-btn" href="${esc(upiLink(o))}">Pay ${rupee(o.total)} by UPI</a><div class="small muted" style="margin-top:6px">Opens your UPI app. The cashier confirms the payment — you can also show the screen at the counter.</div>`;
+ let h=(o.declinedItems&&o.declinedItems.length)?`<div class="msg" style="display:block;background:#F6EBC9;color:#5c4400">Not available right now: ${esc(o.declinedItems.map(i=>itemQty(i)+'× '+itemName(i)).join(', '))}. Your bill has been updated.</div>`:'';if(paid)h+='<div class="msg ok" style="display:block">Payment received. Thank you!</div>';
+ else if(!bad&&RF.brand.upiId&&(st==='delivered'||o.paymentMethod==='UPI'))h+=`<a class="btn upi-btn" href="${esc(upiLink(o))}">Pay ${rupee(o.total)} by UPI</a><div class="small muted" style="margin-top:6px">Opens your UPI app. The cashier confirms the payment — you can also show the screen at the counter.</div>`;
  if(st==='delivered'||st==='closed')h+='<button class="btn light" data-cust-bill style="margin-top:8px">View / print bill</button>';
  $('custPayBox').innerHTML=h;if(RF.lastOrder&&RF.lastOrder.status!==st&&st==='ready'){toast('🍽 Your order is ready and on its way!',{kind:'new'});try{navigator.vibrate&&navigator.vibrate(300)}catch(e){}}RF.lastOrder=o}
 startCustomerPolling=function(){if(RF.trackUnsub)RF.trackUnsub();if(customerPoll)clearInterval(customerPoll);const id=customerOrderId,poll=()=>getDoc(doc(db,'orders',id)).then(s=>s.exists()&&paintTrack({id:s.id,...s.data()})).catch(()=>{});
@@ -2483,5 +2504,126 @@ placeBdOrder=async function(){const btn=$('bdPlace');if(!bdCart.length)return ms
   await addDoc(collection(db,'auditLogs'),{actorUid:currentUser.uid,actorEmail:currentUser.email||'',action:'order_status_change',entity:'order',details:{id:ref.id,status:'accepted',previousStatus:'new',source:'billdesk'},createdAt:serverTimestamp()});
   bdCart=[];const num=order.orderNumber;await renderStaffNewOrder();msg($('bdMsg'),'Order '+num+' placed and sent to the kitchen.','ok');toast('Order '+num+' sent to kitchen.',{action:'Print KOT',fn:()=>doPrint('kot',ref.id),ms:12000})
  }catch(e){btn.disabled=false;msg($('bdMsg'),'Order could not be placed: '+(e.code||e.message))}};
+
+/* ===== V5.9: ranges, clickable cards, pick-items, bill desk actions, brand in sidebar ===== */
+function paintBrand(){const x=RF.brand||{};document.querySelectorAll('.brand-logo').forEach(i=>{if(x.logoData){i.src=x.logoData;i.classList.remove('hidden')}else i.classList.add('hidden')});document.querySelectorAll('.brand-name').forEach(n=>n.textContent=x.name||'RestaurantFlow');if(x.name)document.title=x.name}
+const SIDE_BRAND='<div class="side-brand"><img class="brand-logo hidden" alt=""><span class="brand-name">RestaurantFlow</span></div>';
+const _initStaffView58=initStaffView;
+initStaffView=function(role,d){_initStaffView58(role,d);const nav=$('staffNav');
+ if(!nav.querySelector('.side-brand'))nav.insertAdjacentHTML('afterbegin',SIDE_BRAND);
+ if(!nav._cap){nav._cap=1;nav.addEventListener('click',e=>{if(e.target.closest('[data-staff-tab]')){RF.tableFilter='';RF.ordFilter=''}},true)}
+ paintBrand();RF.tableFilter='';RF.ordFilter='';if(role==='steward')staffShowPage('staffDashboardPage')};
+
+/* ---- period picker + summary ---- */
+const PRESETS=[['today','Today'],['yesterday','Yesterday'],['7d','Last 7 days'],['30d','Last 30 days'],['month','This month'],['custom','Custom dates']];
+function presetDates(k){const t=new Date(),d=n=>{const x=new Date(t);x.setDate(x.getDate()-n);return localISO(x)};
+ if(k==='yesterday')return [d(1),d(1)];if(k==='7d')return [d(6),localISO(t)];if(k==='30d')return [d(29),localISO(t)];if(k==='month')return [localISO(new Date(t.getFullYear(),t.getMonth(),1)),localISO(t)];return [localISO(t),localISO(t)]}
+function mountSummary(el,withExport){
+ const S=RF.rng||(RF.rng={preset:'today',from:localISO(new Date()),to:localISO(new Date())});if(S.preset!=='custom')[S.from,S.to]=presetDates(S.preset);
+ el.innerHTML=`<div class="range-bar"><div><label class="small muted">Period</label><select class="input" data-r="preset">${PRESETS.map(([v,l])=>`<option value="${v}"${v===S.preset?' selected':''}>${l}</option>`).join('')}</select></div><div><label class="small muted">From</label><input class="input" type="date" data-r="from" value="${S.from}"></div><div><label class="small muted">To</label><input class="input" type="date" data-r="to" value="${S.to}"></div></div><div data-r="out"></div>`;
+ const out=el.querySelector('[data-r=out]'),q=k=>el.querySelector(`[data-r=${k}]`);
+ el._reload=()=>{if(S.preset!=='custom'){[S.from,S.to]=presetDates(S.preset);q('from').value=S.from;q('to').value=S.to}renderRangeInto(out,S.from,S.to,withExport)};
+ q('preset').onchange=()=>{S.preset=q('preset').value;el._reload()};
+ q('from').onchange=q('to').onchange=()=>{S.preset='custom';S.from=q('from').value;S.to=q('to').value;q('preset').value='custom';el._reload()};
+ el._reload()}
+renderDayInto=(el,d,w)=>mountSummary(el,w);
+async function renderRangeInto(out,from,to,withExport){
+ const tok=out._tok=(out._tok||0)+1;
+ if(!from||!to){out.innerHTML='<p class="muted">Pick both dates.</p>';return}
+ if(from>to){out.innerHTML='<p class="muted">The From date is after the To date.</p>';return}
+ if((new Date(to)-new Date(from))/864e5>92){out.innerHTML='<p class="muted">Please choose a period of 92 days or less.</p>';return}
+ out.innerHTML='<p class="muted">Loading…</p>';
+ try{const [os,ps]=await Promise.all([rangeDocs('orders',from,to),rangeDocs('payments',from,to)]);if(tok!==out._tok)return;out._d={os,ps};
+  const one=from===to,title=one?(from===localISO(new Date())?'Today':from):from+' to '+to;
+  out.innerHTML=daySummaryHTML(os,ps,title,!one)+'<div class="sum-detail"></div>'+(withExport?`<div class="row-actions" style="margin-top:12px"><span class="small muted" style="align-self:center">Download for this period:</span><button class="btn light" data-csv="orders" data-from="${from}" data-to="${to}">⬇ Orders</button><button class="btn light" data-csv="payments" data-from="${from}" data-to="${to}">⬇ Payments</button><button class="btn light" data-csv="items" data-from="${from}" data-to="${to}">⬇ Items sold</button></div>`:'')
+ }catch(e){if(tok===out._tok)out.innerHTML='<p class="muted">Could not load summary: '+esc(e.code||e.message)+'</p>'}}
+daySummaryHTML=function(os,ps,title,multi){
+ const sales=os.filter(liveSale),tot=a=>a.reduce((x,o)=>x+orderTotal(o),0),sum=(a,f)=>a.reduce((x,o)=>x+(Number(f(o))||0),0),unpaid=sales.filter(o=>!['paid','closed'].includes(o.paymentStatus)),
+ collected=sum(ps,p=>p.amount||p.total),byM=sumBy(ps,p=>p.method||p.paymentMethod||'Other',p=>p.amount||p.total),items={};
+ sales.forEach(o=>orderItems(o).forEach(i=>{items[itemName(i)]=(items[itemName(i)]||0)+itemQty(i)}));
+ const prep=sales.filter(o=>o.acceptedAt&&o.readyAt).map(o=>(tsMs(o.readyAt)-tsMs(o.acceptedAt))/60000).filter(x=>x>=0&&x<300),avgPrep=prep.length?Math.round(prep.reduce((a,b)=>a+b,0)/prep.length):null;
+ const c=(k,l,v,s)=>`<button type="button" class="card rep-card sum-card" data-sum="${k}"><b>${l}</b><div class="metric">${v}</div><div class="small">${s||'&nbsp;'}</div></button>`;
+ return `<h3 style="margin:14px 0 8px">${esc(title)} <span class="small muted">· tap a card for details</span></h3><div class="grid">${c('orders','Orders',sales.length,(os.length-sales.length)+' declined/cancelled')}${c('sales','Sales (incl. GST)',formatMoney(tot(sales)))}${c('gst','GST in sales',formatMoney(sum(sales,o=>o.tax)))}${c('collected','Collected',formatMoney(collected),ps.length+' payment(s)')}${c('cash',multi?'Cash collected':'Cash to hand over',formatMoney(byM.Cash||0))}${c('pending','Pending payment',formatMoney(tot(unpaid)),unpaid.length+' bill(s) open')}${c('discounts','Discounts',formatMoney(sum(sales,o=>o.discount)))}${c('tips','Tips',formatMoney(sum(ps,p=>p.tip||p.tipAmount)))}${c('avg','Average bill',formatMoney(sales.length?tot(sales)/sales.length:0),avgPrep!=null?'Kitchen avg '+avgPrep+' min':'')}</div><div class="rep-grid">${barBlock('Collected by method',byM,formatMoney)}${barBlock('Top items (qty)',items,n=>n)}</div>`};
+function payRows2(list,lab){return `<div class="preview"><table><thead><tr><th>Order</th><th>Method</th><th>Table</th><th>Tip</th><th>Amount</th></tr></thead><tbody>${list.slice(0,80).map(p=>`<tr><td>${esc(lab[p.orderId]||('…'+String(p.orderId).slice(-4)))}<div class="small muted">${esc(whenText(p))}</div></td><td>${esc(p.method||'Other')}</td><td>${esc(p.table||'—')}</td><td class="money">${formatMoney(p.tip||0)}</td><td class="money">${formatMoney(p.amount||p.total)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">Nothing to show.</td></tr>'}</tbody></table></div>${list.length>80?`<p class="small muted">Showing 80 of ${list.length}. Use the download for the full list.</p>`:''}`}
+function showSumDetail(out,k){const d=out&&out._d;if(!d)return;const sales=d.os.filter(liveSale),paid=o=>['paid','closed'].includes(o.paymentStatus),lab=Object.fromEntries(d.os.map(o=>[o.id,orderLabel(o)]));let title,html;
+ const O=(t,l)=>{title=`${t} (${l.length})`;html=repOrderRows(l.slice().sort((a,b)=>tsMs(b.createdAt)-tsMs(a.createdAt)))},P=(t,l)=>{title=`${t} (${l.length})`;html=payRows2(l,lab)};
+ if(k==='orders'||k==='sales'||k==='avg')O('Orders',sales);else if(k==='gst')O('Orders with GST',sales.filter(o=>Number(o.tax)>0));else if(k==='discounts')O('Orders with discount',sales.filter(o=>Number(o.discount)>0));else if(k==='pending')O('Bills waiting for payment',sales.filter(o=>!paid(o)));
+ else if(k==='collected')P('Payments',d.ps);else if(k==='cash')P('Cash payments',d.ps.filter(p=>(p.method||'')==='Cash'));else if(k==='tips')P('Payments with tip',d.ps.filter(p=>Number(p.tip||p.tipAmount)>0));else return;
+ const box=out.querySelector('.sum-detail');box.innerHTML=`<div class="card rep-detail"><div class="top"><h3>${esc(title)}</h3><button class="btn light" data-sum-close>Close</button></div>${html}</div>`;box.scrollIntoView({behavior:'smooth',block:'nearest'})}
+
+/* ---- order review: accept all / pick items / decline ---- */
+async function decideOrder(o,keep){
+ const ref=doc(db,'orders',o.id),uid=currentUser.uid,base={updatedAt:serverTimestamp(),updatedBy:uid};
+ if(keep==='none'){await updateDoc(ref,{...base,status:'declined',declinedAt:serverTimestamp()});await audit('order_status_change','order',{id:o.id,status:'declined',previousStatus:'new'});return}
+ const all=orderItems(o);
+ if(keep==='all'||keep.length===all.length){await updateDoc(ref,{...base,status:'accepted',acceptedAt:serverTimestamp()});await audit('order_status_change','order',{id:o.id,status:'accepted',previousStatus:'new'});return}
+ const kept=all.filter((_,i)=>keep.includes(i)),dropped=all.filter((_,i)=>!keep.includes(i)),sub=r2(kept.reduce((a,i)=>a+(Number(i.price)||0)*itemQty(i),0)),bc=billCalc(sub,o.discount,o.tip,gstOf(o));
+ await updateDoc(ref,{...base,items:kept,declinedItems:[...(o.declinedItems||[]),...dropped],subtotal:sub,discount:bc.discount,tax:bc.tax,cgst:bc.cgst,sgst:bc.sgst,roundOff:bc.roundOff,total:bc.total,itemsEdited:true,status:'accepted',acceptedAt:serverTimestamp()});
+ await audit('order_items_declined','order',{id:o.id,declined:dropped.map(i=>itemQty(i)+'x '+itemName(i)).join(', '),newTotal:bc.total})}
+async function reviewOrder(id){
+ let o;try{o=await fetchOrder(id)}catch(e){return toast('Could not open order: '+(e.code||e.message))}
+ if(!o)return toast('Order not found.');if((o.status||'new')!=='new')return toast('This order has already been handled.');
+ const items=orderItems(o),w=document.createElement('div');w.className='rf-modal';
+ w.innerHTML=`<div class="card pick"><h3>Table ${esc(o.table||'—')} · ${esc(orderLabel(o))}</h3><p class="small muted">Untick any dish you cannot serve. The bill is recalculated with GST.</p>${noteBox(o)}<div class="pick-list">${items.map((i,k)=>`<label class="pick-row"><input type="checkbox" data-k="${k}" checked><span>${itemQty(i)} × ${i.code?`<span class="code-tag">#${esc(i.code)}</span> `:''}${esc(itemName(i))}</span><b>${rupee((Number(i.price)||0)*itemQty(i))}</b></label>`).join('')}</div><div class="top total-row"><span>Bill total</span><b data-tot></b></div><div class="row-actions"><button class="btn" data-go="sel"></button><button class="btn light" data-go="all">Accept all</button><button class="btn light danger" data-go="no">Decline order</button><button class="btn light" data-go="x">Close</button></div></div>`;
+ document.body.appendChild(w);
+ const picked=()=>[...w.querySelectorAll('[data-k]')].filter(c=>c.checked).map(c=>+c.dataset.k),
+ upd=()=>{const k=picked(),sub=r2(k.reduce((a,i)=>a+(Number(items[i].price)||0)*itemQty(items[i]),0));w.querySelector('[data-tot]').textContent=rupee(billCalc(sub,o.discount,o.tip,gstOf(o)).total);const b=w.querySelector('[data-go=sel]');b.textContent=k.length===items.length?'Accept all':`Accept ${k.length} of ${items.length}`;b.disabled=!k.length};
+ w.addEventListener('change',upd);upd();
+ w.addEventListener('click',async e=>{const b=e.target.closest('[data-go]');if(!b)return;const g=b.dataset.go;if(g==='x'){w.remove();return}
+  if(g==='no'&&!confirm('Decline this whole order?'))return;b.disabled=true;
+  try{await decideOrder(o,g==='no'?'none':g==='all'?'all':picked());w.remove();toast(g==='no'?'Order declined.':'Order accepted and sent to the kitchen.');refreshCurrent()}catch(err){b.disabled=false;toast('Could not save: '+(err.code||err.message))}})}
+
+/* ---- staff orders page (cards, filters, bill desk actions) ---- */
+async function renderStaffOrders(){
+ const all=await staffOrders(),f=RF.ordFilter||'',paid=o=>['paid','closed'].includes(o.paymentStatus),st=o=>o.status||'new';
+ const base={billDesk:['new','accepted','preparing','ready','delivered'],kitchen:['accepted','preparing','ready'],steward:['ready','delivered']}[staffRole]||[];
+ const fm={new:['new'],kitchen:['accepted','preparing'],ready:['ready'],delivered:['delivered']};
+ const pr={new:0,ready:1,delivered:2,preparing:3,accepted:4};
+ const arr=all.filter(o=>base.includes(st(o))&&(!f||(fm[f]||[]).includes(st(o)))).sort((a,b)=>(pr[st(a)]??9)-(pr[st(b)]??9)||tsMs(a.createdAt)-tsMs(b.createdAt));
+ const chips=staffRole==='billDesk'?[['','All'],['new','New'],['kitchen','In kitchen'],['ready','Ready'],['delivered','Served']]:[];
+ const btn=(cls,attrs,l)=>`<button class="btn ${cls}" ${attrs}>${l}</button>`;
+ const card=o=>{const id=esc(o.id),s=st(o);let b='';
+  if(staffRole==='billDesk'){
+   if(s==='new')b+=btn('',`data-staff-status="accepted" data-staff-order="${id}"`,'Accept all')+btn('light',`data-pick-items="${id}"`,'Pick items')+btn('light danger',`data-decline-order="${id}"`,'Decline');
+   if(s==='delivered')b+=paid(o)?btn('','disabled','Paid ✓')+btn('light',`data-staff-status="closed" data-staff-order="${id}"`,'Close bill'):btn('',`data-staff-collect="${id}"`,'Collect payment');
+   b+=btn('light',`data-print-kot="${id}"`,'🖨 KOT')+btn('light',`data-print-bill="${id}"`,'🖨 Bill')+btn('light',`data-move-table="${id}"`,'Move table')}
+  if(staffRole==='kitchen'){if(s==='accepted')b+=btn('',`data-staff-status="preparing" data-staff-order="${id}"`,'Start preparing');if(s==='preparing')b+=btn('',`data-staff-status="ready" data-staff-order="${id}"`,'Mark ready');b+=btn('light',`data-print-kot="${id}"`,'🖨 KOT')}
+  if(staffRole==='steward'){if(s==='ready')b+=btn('',`data-staff-status="delivered" data-staff-order="${id}"`,'Mark served');b+=btn('light',`data-move-table="${id}"`,'Move table')}
+  const dec=(o.declinedItems||[]).length?`<div class="small" style="color:#8F2B2B">Declined: ${esc(o.declinedItems.map(i=>itemQty(i)+'× '+itemName(i)).join(', '))}</div>`:'';
+  return `<div class="card kt kt-${esc(s)}"><div class="top"><div><b class="kt-table">Table ${esc(o.table||o.tableNumber||'—')}</b><div class="small muted">${esc(orderLabel(o))} • ${esc(whenText(o))}</div></div><div>${staffStatus(o)}</div></div><div class="kt-items">${orderItems(o).map(i=>`<div><b>${itemQty(i)} ×</b> ${i.code?`<span class="code-tag">#${esc(i.code)}</span> `:''}${esc(itemName(i))}</div>`).join('')}</div>${noteBox(o)}${dec}${staffRole==='kitchen'?'':custLine(o)}<div class="top" style="margin-top:8px"><b>${staffRole==='kitchen'?'':formatMoney(staffTotal(o))}</b><div class="row-actions">${b}</div></div></div>`};
+ $('staffOrdersPage').innerHTML=`<div class="card"><div class="top"><div><h2>Orders</h2><p class="muted">${arr.length} order${arr.length===1?'':'s'}${f?' • filtered':''}</p></div><button class="btn light" data-refresh-staff>Refresh</button></div>${chips.length?`<div class="chips">${chips.map(([v,l])=>`<button class="chip${f===v?' on':''}" data-ord-filter="${v}">${l}</button>`).join('')}</div>`:''}</div>`+(arr.map(card).join('')||'<div class="card"><p class="muted">No orders here right now.</p></div>');
+ $('staffOrdersPage').onclick=e=>{const b=e.target.closest('[data-staff-status]');if(b){staffSetStatus(b.dataset.staffOrder,b.dataset.staffStatus);return}
+  if(e.target.closest('[data-refresh-staff]'))return loadStaffPage('staffOrdersPage');const c=e.target.closest('[data-ord-filter]');if(c){RF.ordFilter=c.dataset.ordFilter;return loadStaffPage('staffOrdersPage')}
+  const d=e.target.closest('[data-decline-order]');if(d&&confirm('Decline this whole order?'))staffSetStatus(d.dataset.declineOrder,'declined')}}
+
+/* ---- staff dashboard (cards are buttons) ---- */
+async function renderStaffDash(live){
+ const all=await staffOrders(),box=$('staffDashboardPage'),st=o=>o.status||'new',unpaid=o=>!['paid','closed'].includes(o.paymentStatus),dead=o=>['declined','cancelled','closed'].includes(st(o));
+ if(staffRole==='steward'){
+  const by={},uid=currentUser.uid;all.filter(o=>!dead(o)&&!(st(o)==='delivered'&&!unpaid(o))).forEach(o=>{const k=o.table||o.tableNumber||'—';(by[k]=by[k]||[]).push(o)});
+  Object.values(tblInfo).filter(t=>t.stewardUid===uid).forEach(t=>{if(!by[t.name])by[t.name]=[]});
+  const rows=Object.entries(by).map(([k,l])=>({k,n:l.length,ready:l.filter(o=>st(o)==='ready').length,cook:l.filter(o=>['new','accepted','preparing'].includes(st(o))).length,served:l.filter(o=>st(o)==='delivered').length})).sort((a,b)=>b.ready-a.ready||b.n-a.n||String(a.k).localeCompare(String(b.k),undefined,{numeric:true}));
+  box.innerHTML=`<div class="card"><h2>Your tables</h2><p class="muted">${stewardNote()} Tap a table to see its orders.</p></div><div id="tableCards" class="grid">${rows.map(r=>`<button type="button" class="card rep-card" data-table-card="${esc(r.k)}"><b>Table ${esc(r.k)}</b><div class="metric">${r.n}</div><div class="small">${r.n===1?'order':'orders'}${r.n?` • ${[r.ready?r.ready+' ready':'',r.cook?r.cook+' cooking':'',r.served?r.served+' served':''].filter(Boolean).join(' • ')}`:' • none now'}</div></button>`).join('')||'<div class="card"><p class="muted">No tables with orders right now.</p></div>'}</div>`;return}
+ const c={new:0,accepted:0,preparing:0,ready:0,due:0};all.forEach(o=>{const s=st(o);if(c[s]!=null)c[s]++;if(s==='delivered'&&unpaid(o))c.due++});
+ const defs=staffRole==='kitchen'?[['accepted','To start',c.accepted],['preparing','Preparing',c.preparing],['ready','Ready for steward',c.ready]]:[['new','New orders',c.new],['kitchen','In kitchen',c.accepted+c.preparing],['ready','Ready to serve',c.ready],['delivered','Served · payment due',c.due]];
+ if(!live||!$('dashCards')){box.innerHTML='<div id="dashCards" class="grid"></div>'+(staffRole==='billDesk'?'<div class="card" id="staffDay"></div>':'');if(staffRole==='billDesk')mountSummary($('staffDay'),true)}
+ $('dashCards').innerHTML=defs.map(([k,l,n])=>`<button type="button" class="card rep-card" data-dash="${k}"><b>${l}</b><div class="metric">${n}</div><div class="small">Tap to open</div></button>`).join('')}
+const _lsp58=loadStaffPage;
+loadStaffPage=async function(id,live){try{if(id==='staffDashboardPage')return await renderStaffDash(live);if(id==='staffOrdersPage')return await renderStaffOrders()}catch(e){return msg($('staffMsg'),'Unable to load: '+(e.code||e.message))}return _lsp58(id)};
+refreshCurrent=function(){if(!$('adminView').classList.contains('hidden')){loadOrders();loadBilling();return}
+ if(!$('staffView').classList.contains('hidden')){const id=['staffDashboardPage','staffOrdersPage','staffKitchenPage','staffDeliveryPage','staffBillingPage'].find(x=>!$(x).classList.contains('hidden'));if(id)loadStaffPage(id,true)}};
+renderDelivery=async function(){
+ await loadTableMap();const now=Date.now(),tf=RF.tableFilter||'',st=o=>o.status||'new';let arr=await staffOrders();
+ arr=tf?arr.filter(o=>(o.table||o.tableNumber||'—')===tf&&!['declined','cancelled','closed'].includes(st(o))&&!(st(o)==='delivered'&&['paid','closed'].includes(o.paymentStatus))):arr.filter(o=>st(o)==='ready'||(st(o)==='delivered'&&now-tsMs(o.deliveredAt||o.updatedAt)<3600000));
+ const pr={ready:0,new:1,accepted:1,preparing:1,delivered:2};arr.sort((a,b)=>(pr[st(a)]??3)-(pr[st(b)]??3)||tsMs(a.readyAt||a.createdAt)-tsMs(b.readyAt||b.createdAt));
+ $('staffDeliveryPage').innerHTML=`<div class="card"><div class="top"><div><h2>${tf?'Table '+esc(tf):'Serve tables'}</h2><p class="muted">${tf?'All open orders for this table.':stewardNote()}</p></div>${tf?'<button class="btn light" data-table-clear>All tables</button>':''}</div></div>`+(arr.map(o=>{const rd=st(o)==='ready',m=normMobile(o.mobile||o.customerMobile);
+  return `<div class="card kt kt-${esc(st(o))}"><div class="top"><div><b class="kt-table">Table ${esc(o.table||o.tableNumber||'—')}</b><div class="small muted">${esc(orderLabel(o))}${m?` • <a href="tel:${m}">${m}</a>`:''}</div></div><div>${staffStatus(o)} ${rd?timerPill(tsMs(o.readyAt||o.updatedAt),false):''}</div></div><div class="kt-items">${orderItems(o).map(i=>`<div><b>${itemQty(i)} ×</b> ${esc(itemName(i))}</div>`).join('')}</div>${noteBox(o)}<div class="row-actions">${rd?`<button class="btn" data-deliver="${esc(o.id)}">Mark served</button>`:`<span class="pill">${esc(st(o))}</span>`}<button class="btn light" data-move-table="${esc(o.id)}">Move table</button></div></div>`}).join('')||'<div class="card"><p class="muted">Nothing waiting to be served.</p></div>');
+ $('staffDeliveryPage').onclick=e=>{const b=e.target.closest('[data-deliver]');if(b)staffSetStatus(b.dataset.deliver,'delivered');if(e.target.closest('[data-table-clear]')){RF.tableFilter='';loadStaffPage('staffDeliveryPage')}}};
+document.addEventListener('click',e=>{
+ const dd=e.target.closest('[data-dash]'),tc=e.target.closest('[data-table-card]'),sc=e.target.closest('[data-sum]'),sx=e.target.closest('[data-sum-close]'),pk=e.target.closest('[data-pick-items]');
+ if(dd){if(staffRole==='kitchen')staffShowPage('staffKitchenPage');else{RF.ordFilter=dd.dataset.dash;staffShowPage('staffOrdersPage')}}
+ if(tc){RF.tableFilter=tc.dataset.tableCard;staffShowPage('staffDeliveryPage')}
+ if(sc)showSumDetail(sc.closest('[data-r=out]'),sc.dataset.sum);if(sx)sx.closest('.sum-detail').innerHTML='';
+ if(pk)reviewOrder(pk.dataset.pickItems)});
 </script>
 </body></html>
