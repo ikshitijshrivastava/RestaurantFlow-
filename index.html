@@ -255,6 +255,77 @@ details.more-status{margin-top:8px;flex-basis:100%}details.more-status summary{c
 .pick-row input{width:22px;height:22px}
 .sum-detail .rep-detail{margin-top:12px}
 .rf-modal{--serif:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+
+/* ===== V6.0: light customer menu (landing, menu, cart, tracking) ===== */
+body:has(#customerView:not(.hidden)){background:#FAFAF7}
+#customerView{--c:var(--ca,#2F8F83);--soft:color-mix(in srgb,var(--c) 11%,#fff);--line2:color-mix(in srgb,var(--c) 30%,#fff);--hh:56px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#26303b;min-height:100vh;background:#FAFAF7;max-width:560px;margin:0 auto;position:relative;padding-bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+#customerView h1,#customerView h2,#customerView h3{font-family:inherit;color:#26303b;letter-spacing:0}
+#customerView .cu-screen{display:none;padding:0 14px}
+#customerView[data-screen=landing] #cuLanding,#customerView[data-screen=menu] #cuMenuScreen,#customerView[data-screen=cart] #customerCartCard,#customerView[data-screen=track] #cuTrack,#customerView[data-screen=history] #cuHistory{display:block}
+#customerView[data-screen=landing] #cuLanding{padding:0}
+.cu-top{position:sticky;top:0;z-index:30;height:var(--hh);display:flex;align-items:center;gap:10px;padding:0 10px;background:#fff;border-bottom:1px solid #ECEEF0}
+.cu-top .brand-logo{height:34px;width:auto;max-width:90px;border-radius:6px}
+.cu-ttl{flex:1;font-weight:600;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#customerView[data-screen=landing] #cuScreenTitle,#customerView:not([data-screen=landing]) .cu-top .brand-name,#customerView:not([data-screen=landing]) .cu-top .brand-logo{display:none}
+.cu-ib{border:0;background:transparent;font-size:22px;width:42px;height:42px;border-radius:50%;cursor:pointer;color:#26303b;min-width:42px;padding:0;box-shadow:none}
+.cu-ib:hover{background:var(--soft)}
+#cuHelp{position:absolute;right:10px;top:calc(var(--hh) + 6px);z-index:40;background:#fff;border:1px solid #E3E6E9;border-radius:14px;padding:10px;box-shadow:0 12px 30px -12px rgba(0,0,0,.25);width:min(300px,calc(100% - 20px));margin:0}
+#cuHelp .btn{width:100%;margin:3px 0}
+#customerView .btn{background:var(--c);color:#fff;border-radius:12px;box-shadow:none;font-size:15px;font-weight:600}
+#customerView .btn.light{background:var(--soft);color:var(--c)}
+#customerView .btn:disabled{background:#E6E8EB;color:#9AA1A9}
+#customerView .upi-btn{background:#1a73e8;color:#fff}
+#customerView .card{background:#fff;border:1px solid #ECEEF0;box-shadow:none;border-radius:14px}
+#customerView .input{border-color:#DADFE4;background:#fff}
+#customerView .pill{background:var(--soft);color:var(--c)}
+#customerMsg{margin:10px 14px}
+/* landing */
+.cu-banner{height:190px;background:linear-gradient(135deg,var(--soft),#fff 70%) center/cover no-repeat}
+.cu-hero{text-align:center;padding:0 22px 28px;background:#fff}
+.cu-hero .cu-logo{display:block;margin:-52px auto 0;height:auto;max-height:96px;max-width:170px;padding:8px 10px;background:#fff;border-radius:10px;box-shadow:0 6px 18px -8px rgba(0,0,0,.25);position:relative}
+.cu-hero h1{font-size:22px;letter-spacing:.04em!important;text-transform:uppercase;margin:22px 0 6px;font-weight:700}
+.cu-addr{color:#5d6670;font-size:14px;margin:0 0 12px;line-height:1.45}
+.cu-facts{display:flex;flex-direction:column;gap:8px;align-items:center;color:#38424d;font-size:15px;margin-bottom:26px}
+.cu-facts a{color:inherit;text-decoration:none}
+.cu-hero .btn{width:100%;min-height:50px;margin-top:10px;font-size:16px;letter-spacing:.04em}
+.cu-hero .cu-primary{text-transform:uppercase}
+/* menu */
+.cu-sub{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 4px 8px;font-size:15px}
+.cu-sub b{font-weight:600}
+.vegtoggle{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;cursor:pointer}
+.vegtoggle input{appearance:none;width:40px;height:23px;border-radius:99px;background:#D5DAE0;position:relative;transition:.15s;margin:0;flex:none}
+.vegtoggle input::after{content:"";position:absolute;top:2px;left:2px;width:19px;height:19px;border-radius:50%;background:#fff;transition:.15s;box-shadow:0 1px 2px #0003}
+.vegtoggle input:checked{background:#2FA66A}.vegtoggle input:checked::after{left:19px}
+#cuSearch{margin:4px 0 8px;border-radius:12px}
+.cu-chips{position:sticky;top:var(--hh);z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 14px;margin:0 -14px;background:#FAFAF7;border-bottom:1px solid #ECEEF0;scrollbar-width:none}
+.cu-chips::-webkit-scrollbar{display:none}
+.cu-chip{flex:none;border:1px solid #DADFE4;background:#fff;color:#4a5560;border-radius:999px;padding:8px 16px;font:inherit;font-size:14px;cursor:pointer;min-height:38px}
+.cu-chip.on{background:var(--soft);border-color:var(--c);color:var(--c);font-weight:600}
+.cu-sec{scroll-margin-top:calc(var(--hh) + 62px)}
+.cu-sec-h{font-size:14px;letter-spacing:.07em;text-transform:uppercase;color:#6b7480;margin:20px 2px 10px;font-weight:600}
+#customerMenu .dish.cu-dish{display:grid;grid-template-columns:1fr auto;gap:4px 12px;background:#fff;border:1px solid #ECEEF0;border-radius:14px;padding:14px;margin:0 0 10px}
+.cu-d-name{font-size:17px;font-weight:600;line-height:1.3}
+.cu-d-tags{display:flex;gap:8px;align-items:center;margin:6px 0 4px;flex-wrap:wrap}
+.cu-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:999px;padding:2px 10px 2px 8px}
+.cu-badge i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.cu-badge.veg{background:#E5F4EB;color:#1E7A45}.cu-badge.nonveg{background:#FCE8E6;color:#B3372D}.cu-badge.egg{background:#FFF1D1;color:#85620A}.cu-badge.other{background:#EEF0F2;color:#5d6670}
+.cu-code{font-size:12px;color:#8a929b}
+.cu-d-desc{font-size:13px;color:#7a838c;line-height:1.4;margin:2px 0 8px}
+.cu-price{display:block;font-size:17px;font-weight:600;color:var(--c);margin-top:8px}
+.cu-d-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:8px}
+.cu-d-img{width:84px;height:84px;object-fit:cover;border-radius:12px;background:var(--soft)}
+.cu-plus{width:42px;height:42px;min-width:42px;border-radius:50%;border:1.5px solid var(--c);background:#fff;color:var(--c);font-size:26px;line-height:1;padding:0;cursor:pointer;box-shadow:none}
+.cu-step{display:inline-flex;align-items:center;background:var(--soft);border-radius:999px;border:1px solid var(--line2)}
+.cu-step button{width:38px;height:38px;min-width:38px;border:0;background:transparent;color:var(--c);font-size:22px;border-radius:50%;cursor:pointer;padding:0}
+.cu-step span{min-width:22px;text-align:center;font-weight:700;color:var(--c)}
+#customerMenu .dish.out{opacity:.55}.oos{font-size:12px;color:#B3372D;font-weight:600}
+#cuCartBar{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));width:min(536px,calc(100% - 24px));z-index:50;justify-content:space-between;align-items:center;min-height:52px;padding:0 18px;font-size:15px;letter-spacing:.03em;text-transform:uppercase}
+#customerView[data-screen=menu] #cuCartBar{display:flex}
+/* cart + tracking */
+#customerCartCard,#cuTrack,#cuHistory{padding-top:6px}
+#customerCartCard.card{margin:12px 14px;padding:16px}
+.cart-row{border-bottom:1px solid #ECEEF0}
+.cu-hrow{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;font:inherit;cursor:pointer;margin:0 0 10px}
 </style>
 <script>
 // Self-contained QR generator based on qrcode-terminal vendor/QRCode (MIT).
@@ -1512,41 +1583,59 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
 <p class="small muted" style="margin-top:14px">Firebase project: restaurantflow-4a128</p>
 </section>
 
-<section id="customerView" class="hidden">
-  <div class="wrap customer-shell">
-    <div class="card top customer-header"><div style="display:flex;gap:12px;align-items:center"><img class="brand-logo hidden" alt=""><div><div class="h1 brand-name">RestaurantFlow</div><div class="muted">Tap Add on a dish. We'll bring it to your table.</div></div></div><span id="customerTablePill" class="pill"></span></div>
-    <div id="customerMsg" class="msg"></div>
-    <div class="svc-bar"><button class="btn light" data-svc="steward">🔔 Call steward</button><button class="btn light" data-svc="water">💧 Water</button><button class="btn light" data-svc="bill">🧾 Request bill</button></div>
-    <div class="grid customer-menu-grid">
-      <div class="card customer-menu-card">
-        <div class="top"><div><h2>Our menu</h2></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><label class="vegtoggle"><input type="checkbox" id="customerVegOnly"> 🟢 Veg only</label><select id="customerCategory" class="input" style="max-width:220px;margin:0"><option value="">All categories</option></select></div></div>
-        <div id="customerMenu"></div>
-      </div>
-      <div id="customerCartCard" class="card customer-cart-card">
-        <h2>Your order</h2>
-        <div id="customerCart"></div>
-        <div class="top total-row"><span>Subtotal</span><b id="customerSubtotal">₹0</b></div>
-        <div id="customerTaxRows"></div>
-        <label>Tip for the team <span class="muted small">(optional)</span></label>
-        <input id="customerTip" class="input" type="number" min="0" step="1" value="0" inputmode="decimal">
-        <div class="top total-row"><b>Total</b><b id="customerTotalDisp">₹0</b></div>
-        <label>Note for the kitchen <span class="muted small">(optional — less spicy, no onion, allergies…)</span></label>
-        <textarea id="customerNote" class="input" rows="2" maxlength="200" placeholder="e.g. Jain, no garlic"></textarea>
-        <label>Your mobile number</label>
-        <input id="customerMobile" class="input" inputmode="numeric" autocomplete="tel" maxlength="16" placeholder="10-digit number, for order updates">
-        <label>When will you pay?</label>
-        <select id="customerPaymentTiming" class="input"><option value="postpaid">Pay later</option><option value="prepaid">Pay now</option></select>
-        <label>How will you pay?</label>
-        <select id="customerPayment" class="input"><option value="UPI">UPI</option><option value="Card">Card</option><option value="Cash">Cash / counter</option></select>
-        <label>Payment reference <span class="muted small">(optional)</span></label>
-        <input id="customerPaymentReference" class="input" placeholder="UPI / card reference if available" autocomplete="off">
-        <div id="customerPaymentNote" class="small muted" style="margin:-5px 0 12px"></div>
-        <button id="placeCustomerOrderBtn" class="btn" style="width:100%">Confirm Order</button>
-      </div>
+<section id="customerView" class="hidden" data-screen="landing">
+  <header class="cu-top"><button type="button" class="cu-ib hidden" id="cuBack" data-cu-back aria-label="Back">‹</button><img class="brand-logo hidden" alt=""><div class="cu-ttl"><span class="brand-name">RestaurantFlow</span><span id="cuScreenTitle"></span></div><button type="button" class="cu-ib" data-cu-help aria-label="Call the team">🔔</button></header>
+  <div id="cuHelp" class="card hidden"><div class="small muted" style="margin-bottom:6px">Need something at your table?</div><button class="btn light" data-svc="steward">🔔 Call steward</button><button class="btn light" data-svc="water">💧 Water please</button><button class="btn light" data-svc="bill">🧾 Request bill</button></div>
+  <div id="customerMsg" class="msg"></div>
+  <span id="customerTablePill" class="hidden"></span>
+  <div id="cuLanding" class="cu-screen">
+    <div id="cuBanner" class="cu-banner"></div>
+    <div class="cu-hero">
+      <img class="brand-logo cu-logo hidden" alt="">
+      <h1 id="cuService">Dine-in ordering</h1>
+      <p id="cuAddress" class="cu-addr"></p>
+      <div class="cu-facts"><span>🍽 <b id="cuTable"></b></span><span id="cuHoursF" class="hidden">🕒 <b id="cuHours"></b></span><a id="cuPhoneF" class="hidden" href="#">📞 <b id="cuPhone"></b></a></div>
+      <button type="button" class="btn cu-primary" data-cu-go="menu">Order now</button>
+      <button type="button" class="btn light" data-cu-hist>My orders</button>
     </div>
-    <div id="customerOrderCard" class="card hidden"><div class="top"><div><h2>Order Tracking</h2><div id="customerOrderId" class="muted"></div></div><span id="customerOrderStatus" class="pill"></span></div><div id="custSteps" class="steps"></div><div id="custPayBox"></div><p class="muted">Keep this page open to see your order progress.</p></div>
   </div>
+  <div id="cuMenuScreen" class="cu-screen">
+    <div class="cu-sub"><span>📍 Dine-in <b id="cuSubTable"></b></span><label class="vegtoggle"><input type="checkbox" id="customerVegOnly"> Veg only</label></div>
+    <input id="cuSearch" class="input" type="search" placeholder="Search dish or serial no." autocomplete="off">
+    <div id="cuChips" class="cu-chips hidden"></div>
+    <select id="customerCategory" class="hidden"><option value="">All categories</option></select>
+    <div id="customerMenu"></div>
+  </div>
+  <div id="customerCartCard" class="card cu-cart cu-screen">
+    <h2>Your order</h2>
+    <div id="customerCart"></div>
+    <button type="button" class="btn light" data-cu-go="menu" style="width:100%;margin:8px 0 12px">+ Add more dishes</button>
+    <div class="top total-row"><span>Subtotal</span><b id="customerSubtotal">₹0</b></div>
+    <div id="customerTaxRows"></div>
+    <label>Tip for the team <span class="muted small">(optional)</span></label>
+    <input id="customerTip" class="input" type="number" min="0" step="1" value="0" inputmode="decimal">
+    <div class="top total-row"><b>Total</b><b id="customerTotalDisp">₹0</b></div>
+    <label>Note for the kitchen <span class="muted small">(optional — less spicy, no onion, allergies…)</span></label>
+    <textarea id="customerNote" class="input" rows="2" maxlength="200" placeholder="e.g. Jain, no garlic"></textarea>
+    <label>Your mobile number</label>
+    <input id="customerMobile" class="input" inputmode="numeric" autocomplete="tel" maxlength="16" placeholder="10-digit number, for order updates">
+    <label>When will you pay?</label>
+    <select id="customerPaymentTiming" class="input"><option value="postpaid">Pay later</option><option value="prepaid">Pay now</option></select>
+    <label>How will you pay?</label>
+    <select id="customerPayment" class="input"><option value="UPI">UPI</option><option value="Card">Card</option><option value="Cash">Cash / counter</option></select>
+    <label>Payment reference <span class="muted small">(optional)</span></label>
+    <input id="customerPaymentReference" class="input" placeholder="UPI / card reference if available" autocomplete="off">
+    <div id="customerPaymentNote" class="small muted" style="margin:-5px 0 12px"></div>
+    <button id="placeCustomerOrderBtn" class="btn" style="width:100%">Confirm Order</button>
+  </div>
+  <div id="cuTrack" class="cu-screen">
+    <div id="customerOrderCard" class="card hidden"><div class="top"><div><h2>Order Tracking</h2><div id="customerOrderId" class="muted"></div></div><span id="customerOrderStatus" class="pill"></span></div><div id="custSteps" class="steps"></div><div id="custPayBox"></div><p class="muted">Keep this page open to see your order progress.</p></div>
+    <button type="button" class="btn light" data-cu-go="menu" style="width:100%">Order more</button>
+  </div>
+  <div id="cuHistory" class="cu-screen"><div id="cuHistList"></div></div>
+  <button type="button" id="cuCartBar" class="btn" data-cu-go="cart" disabled></button>
 </section>
+
 <section id="staffView" class="hidden">
   <div id="staffNav" class="tabs"></div>
   <div id="staffMain" style="padding-left:250px">
@@ -1625,7 +1714,7 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
 <div id="staffCreateMsg" class="msg"></div><p class="small muted">One-time Firebase setup: publish the supplied <b>RestaurantFlow_v3_9_firestore.rules</b> so an admin can create staff profiles. After that, staff setup is done entirely from this screen.</p></div>
 <div class="card"><div class="top"><div><h3>Existing Staff</h3><p class="muted">Select a role and tick only the access areas that person should have. UID is hidden; the email is the identifier you work with.</p></div><button id="refreshStaffBtn" class="btn light">Refresh</button></div><div id="staffList">Loading...</div></div></div>
 
-<div id="settingsTab" class="tabbody hidden"><div class="card"><h2>Restaurant Settings</h2><p class="muted">Choose how customers pay. This setting controls the customer QR checkout flow.</p><div class="grid"><input id="restName" class="input" placeholder="Restaurant name"><input id="restCurrency" class="input" placeholder="Currency e.g. INR"><input id="restTimezone" class="input" placeholder="Timezone"><select id="restTax" class="input"><option value="false">Tax disabled</option><option value="true">Tax enabled</option></select><input id="restTaxRate" class="input" type="number" step="0.01" placeholder="Tax rate %"><select id="restPaymentTiming" class="input"><option value="postpaid">Post-payment — order first, pay later</option><option value="prepaid">Pre-payment — pay before order is submitted</option><option value="customer_choice">Customer choice — pay now or pay later</option></select></div><h3 style="margin-top:18px">Bill details, GST and UPI</h3><div class="grid"><div><label>Address (printed on bill)</label><input id="restAddress" class="input" placeholder="Shop no., street, city, PIN"></div><div><label>Phone</label><input id="restPhone" class="input" inputmode="tel"></div><div><label>GSTIN <span class="muted small">(if registered)</span></label><input id="restGstin" class="input" placeholder="29ABCDE1234F1Z5" maxlength="15" style="text-transform:uppercase"></div><div><label>FSSAI licence no.</label><input id="restFssai" class="input" inputmode="numeric" maxlength="14"></div><div><label>GST on menu prices</label><select id="restTaxMode" class="input"><option value="exclusive">Added on top of menu price</option><option value="inclusive">Already included in menu price</option></select></div><div><label>Round bill to nearest ₹1</label><select id="restRoundOff" class="input"><option value="true">Yes</option><option value="false">No</option></select></div><div><label>UPI ID (VPA) for customer payments</label><input id="restUpi" class="input" placeholder="cafename@okaxis" autocapitalize="off"></div><div><label>Bill footer message</label><input id="restFooter" class="input" placeholder="Thank you! Visit again."></div></div><label>Restaurant logo <span class="muted small">(shown to customers, staff and on bills)</span></label><img id="restLogoPrev" class="logo-prev hidden" alt="Logo preview"><input id="restLogoFile" type="file" accept="image/*" class="input"><button type="button" id="restLogoClear" class="btn light">Remove logo</button><div class="card warning" style="margin-top:12px"><b>GST note</b><div class="small" style="margin-top:5px">Set "Tax enabled" and the total GST % above (for example 5). The bill splits it equally into CGST and SGST. Confirm the correct rate and registration rules for your outlet with your CA.</div></div>
+<div id="settingsTab" class="tabbody hidden"><div class="card"><h2>Restaurant Settings</h2><p class="muted">Choose how customers pay. This setting controls the customer QR checkout flow.</p><div class="grid"><input id="restName" class="input" placeholder="Restaurant name"><input id="restCurrency" class="input" placeholder="Currency e.g. INR"><input id="restTimezone" class="input" placeholder="Timezone"><select id="restTax" class="input"><option value="false">Tax disabled</option><option value="true">Tax enabled</option></select><input id="restTaxRate" class="input" type="number" step="0.01" placeholder="Tax rate %"><select id="restPaymentTiming" class="input"><option value="postpaid">Post-payment — order first, pay later</option><option value="prepaid">Pre-payment — pay before order is submitted</option><option value="customer_choice">Customer choice — pay now or pay later</option></select></div><h3 style="margin-top:18px">Bill details, GST and UPI</h3><div class="grid"><div><label>Address (printed on bill)</label><input id="restAddress" class="input" placeholder="Shop no., street, city, PIN"></div><div><label>Phone</label><input id="restPhone" class="input" inputmode="tel"></div><div><label>GSTIN <span class="muted small">(if registered)</span></label><input id="restGstin" class="input" placeholder="29ABCDE1234F1Z5" maxlength="15" style="text-transform:uppercase"></div><div><label>FSSAI licence no.</label><input id="restFssai" class="input" inputmode="numeric" maxlength="14"></div><div><label>GST on menu prices</label><select id="restTaxMode" class="input"><option value="exclusive">Added on top of menu price</option><option value="inclusive">Already included in menu price</option></select></div><div><label>Round bill to nearest ₹1</label><select id="restRoundOff" class="input"><option value="true">Yes</option><option value="false">No</option></select></div><div><label>UPI ID (VPA) for customer payments</label><input id="restUpi" class="input" placeholder="cafename@okaxis" autocapitalize="off"></div><div><label>Bill footer message</label><input id="restFooter" class="input" placeholder="Thank you! Visit again."></div></div><label>Restaurant logo <span class="muted small">(shown to customers, staff and on bills)</span></label><img id="restLogoPrev" class="logo-prev hidden" alt="Logo preview"><input id="restLogoFile" type="file" accept="image/*" class="input"><button type="button" id="restLogoClear" class="btn light">Remove logo</button><h3 style="margin-top:18px">Customer menu page</h3><div class="grid"><div><label>Page heading</label><input id="restService" class="input" placeholder="Dine-in ordering" maxlength="40"></div><div><label>Opening hours</label><input id="restHours" class="input" placeholder="11 AM – 11 PM" maxlength="60"></div><div><label>Theme colour</label><input id="restColor" type="color" class="input" value="#2F8F83" style="padding:4px"></div></div><label>Banner image <span class="muted small">(wide photo at the top of the customer page — optional, you can add it later)</span></label><img id="restBannerPrev" class="logo-prev hidden" style="max-width:100%;height:90px" alt="Banner preview"><input id="restBannerFile" type="file" accept="image/*" class="input"><button type="button" id="restBannerClear" class="btn light">Remove banner</button><div class="card warning" style="margin-top:12px"><b>GST note</b><div class="small" style="margin-top:5px">Set "Tax enabled" and the total GST % above (for example 5). The bill splits it equally into CGST and SGST. Confirm the correct rate and registration rules for your outlet with your CA.</div></div>
 <div class="card warning"><b>Pre-payment</b><div class="small" style="margin-top:5px">The customer checkout is gateway-ready, but a real online payment gateway (for example Razorpay/Stripe) must be connected before real pre-payment can be accepted. The app will not mark a pre-payment as successful without a verified gateway result.</div></div><button id="saveSettingsBtn" class="btn">Save Restaurant Settings</button></div></div>
 
 <div id="bulkTab" class="tabbody hidden">
@@ -2455,8 +2544,7 @@ renderCustomerCart=function(){
  $('customerCart').innerHTML=customerCart.map(x=>`<div class="cart-row"><div><b>${esc(x.name)}</b><div class="small muted">${rupee(x.price)} each</div></div><div class="stepper"><button class="btn light" data-cart-minus="${x.id}" aria-label="Remove one">−</button><span class="qty">${x.qty}</span><button class="btn light" data-cart-plus="${x.id}" aria-label="Add one">+</button></div><b class="line-total">${rupee(Number(x.price||0)*x.qty)}</b></div>`).join('')||'<p class="muted empty">Your cart is empty. Tap Add on a dish to start.</p>';
  $('customerCart').onclick=e=>{const p=e.target.closest('[data-cart-plus]'),m=e.target.closest('[data-cart-minus]');if(p){const x=customerCart.find(y=>y.id===p.dataset.cartPlus);if(x)x.qty++}if(m){const x=customerCart.find(y=>y.id===m.dataset.cartMinus);if(x){x.qty--;if(x.qty<=0)customerCart=customerCart.filter(y=>y.id!==x.id)}}renderCustomerCart()};
  paintCustomerMenu();
- let b=$('cartBar');if(!b){b=document.createElement('button');b.id='cartBar';b.className='cart-bar hidden';b.onclick=()=>$('customerCartCard').scrollIntoView({behavior:'smooth'});document.body.appendChild(b)}
- const n=customerCart.reduce((a,x)=>a+x.qty,0);b.classList.toggle('hidden',!n);b.innerHTML=`<span>🛒 ${n} item${n>1?'s':''}</span><b>${rupee(bc.total)} · View order</b>`};
+ cuCartBar(customerCart.reduce((a,x)=>a+x.qty,0),bc.total)};
 placeCustomerOrder=async function(){
  if(!customerTableId)return msg($('customerMsg'),'Invalid table QR. Please scan the table QR again.');
  if(!customerCart.length)return msg($('customerMsg'),'Add at least one item.');
@@ -2473,9 +2561,9 @@ placeCustomerOrder=async function(){
    items:customerCart.map(x=>({id:x.id,code:x.code||'',name:x.name,price:Number(x.price)||0,qty:x.qty,foodType:x.foodType||'Other'})),
    subtotal,discount:0,gst:g,tax:bc.tax,cgst:bc.cgst,sgst:bc.sgst,roundOff:bc.roundOff,tip,total:bc.total,status:'new',paymentStatus:'pending',paymentTiming:'postpaid',paymentMethod:$('customerPayment').value,paymentReference:($('customerPaymentReference')?.value||'').trim(),createdAt:serverTimestamp()};
   order.orderNumber=makeOrderNumber(order.table,new Date(),ref.id);await setDoc(ref,order);
-  try{localStorage.setItem('rf_mobile',mobile)}catch(e){}
+  try{localStorage.setItem('rf_mobile',mobile)}catch(e){}cuSaveHist(ref.id,order.orderNumber);
   customerOrderId=ref.id;customerCart=[];$('customerNote').value='';renderCustomerCart();$('customerOrderCard').classList.remove('hidden');$('customerOrderId').textContent='Order ID: '+order.orderNumber;
-  paintTrack({...order,id:ref.id});msg($('customerMsg'),'Order placed. Keep this page open to follow it.','ok');startCustomerPolling();$('customerOrderCard').scrollIntoView({behavior:'smooth'})
+  paintTrack({...order,id:ref.id});msg($('customerMsg'),'Order placed. Keep this page open to follow it.','ok');startCustomerPolling();cuGo('track')
  }catch(e){msg($('customerMsg'),'Order could not be placed: '+(e.code||e.message))}finally{btn.disabled=false}};
 const STEP_LABEL=['Placed','Accepted','Preparing','Ready','Served'],STEP_FLOW=['new','accepted','preparing','ready','delivered'];
 function paintTrack(o){
@@ -2506,7 +2594,7 @@ placeBdOrder=async function(){const btn=$('bdPlace');if(!bdCart.length)return ms
  }catch(e){btn.disabled=false;msg($('bdMsg'),'Order could not be placed: '+(e.code||e.message))}};
 
 /* ===== V5.9: ranges, clickable cards, pick-items, bill desk actions, brand in sidebar ===== */
-function paintBrand(){const x=RF.brand||{};document.querySelectorAll('.brand-logo').forEach(i=>{if(x.logoData){i.src=x.logoData;i.classList.remove('hidden')}else i.classList.add('hidden')});document.querySelectorAll('.brand-name').forEach(n=>n.textContent=x.name||'RestaurantFlow');if(x.name)document.title=x.name}
+function paintBrand(){const x=RF.brand||{};document.querySelectorAll('.brand-logo').forEach(i=>{if(x.logoData){i.src=x.logoData;i.classList.remove('hidden')}else i.classList.add('hidden')});document.querySelectorAll('.brand-name').forEach(n=>n.textContent=x.name||'RestaurantFlow');if(x.name)document.title=x.name;paintLanding()}
 const SIDE_BRAND='<div class="side-brand"><img class="brand-logo hidden" alt=""><span class="brand-name">RestaurantFlow</span></div>';
 const _initStaffView58=initStaffView;
 initStaffView=function(role,d){_initStaffView58(role,d);const nav=$('staffNav');
@@ -2625,5 +2713,62 @@ document.addEventListener('click',e=>{
  if(tc){RF.tableFilter=tc.dataset.tableCard;staffShowPage('staffDeliveryPage')}
  if(sc)showSumDetail(sc.closest('[data-r=out]'),sc.dataset.sum);if(sx)sx.closest('.sum-detail').innerHTML='';
  if(pk)reviewOrder(pk.dataset.pickItems)});
+
+/* ===== V6.0: light customer experience ===== */
+function foodBadge(t){const k=foodKind(t),l={veg:'Veg',nonveg:'Non-veg',egg:'Egg',other:String(t||'')}[k];return l?`<span class="cu-badge ${k}"><i></i>${esc(l)}</span>`:''}
+dishCtl=function(id,q){return q>0?`<div class="cu-step"><button data-menu-minus="${id}" aria-label="Remove one">−</button><span>${q}</span><button data-add-cart="${id}" aria-label="Add one">+</button></div>`:`<button class="cu-plus" data-add-cart="${id}" aria-label="Add to order">+</button>`};
+dishHTML=function(x){const q=(customerCart.find(c=>c.id===x.id)||{}).qty||0,out=!isAvail(x);
+ return `<div class="dish cu-dish${out?' out':''}" data-dish="${x.id}"><div class="cu-d-main"><div class="cu-d-name">${esc(x.name)}</div><div class="cu-d-tags">${foodBadge(x.foodType)}${x.code?`<span class="cu-code">#${esc(x.code)}</span>`:''}</div>${x.description?`<div class="cu-d-desc">${esc(x.description)}</div>`:''}<b class="cu-price">${rupee(x.price)}</b></div><div class="cu-d-side">${x.imageData?`<img class="cu-d-img" src="${x.imageData}" alt="" loading="lazy" decoding="async">`:''}<span class="dish-ctl">${out?'<span class="oos">Out of stock</span>':dishCtl(x.id,q)}</span></div></div>`};
+renderCustomerMenu=function(){
+ const cats=[...$('customerCategory').options].filter(o=>o.value).map(o=>({id:o.value,name:o.textContent})),q=(RF.q||'').toLowerCase();
+ const list=custMenuAll.filter(x=>x.active!==false&&(!RF.vegOnly||foodKind(x.foodType)==='veg')&&(!q||String(x.name||'').toLowerCase().includes(q)||String(x.code||'')===q)).sort(byCode);
+ const groups=cats.map(c=>({c,items:list.filter(x=>x.categoryId===c.id)})).filter(g=>g.items.length),rest=list.filter(x=>!cats.some(c=>c.id===x.categoryId));
+ if(rest.length)groups.push({c:{id:'_more',name:cats.length?'More':'Menu'},items:rest});
+ const ch=$('cuChips'),sl=ch.scrollLeft;
+ ch.innerHTML=groups.length>1?groups.map(g=>`<button class="cu-chip" data-chip="${esc(g.c.id)}">${esc(g.c.name)}</button>`).join(''):'';ch.classList.toggle('hidden',groups.length<2);ch.scrollLeft=sl;
+ $('customerMenu').innerHTML=groups.map(g=>`<section class="cu-sec" data-sec="${esc(g.c.id)}"><h2 class="cu-sec-h">${esc(g.c.name)}</h2>${g.items.map(dishHTML).join('')}</section>`).join('')||'<p class="muted empty">No dishes match right now.</p>';cuSpy()};
+function cuSpy(){const secs=[...document.querySelectorAll('#customerMenu .cu-sec')],ch=$('cuChips');if(!secs.length||$('customerView').dataset.screen!=='menu')return;
+ const off=$('customerView').querySelector('.cu-top').offsetHeight+ch.offsetHeight+16;let cur=secs[0];secs.forEach(s=>{if(s.getBoundingClientRect().top-off<=0)cur=s});if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4&&window.scrollY>0)cur=secs[secs.length-1];
+ ch.querySelectorAll('.cu-chip').forEach(c=>{const on=c.dataset.chip===cur.dataset.sec;if(on&&!c.classList.contains('on'))ch.scrollLeft=c.offsetLeft-ch.clientWidth/2+c.clientWidth/2;c.classList.toggle('on',on)})}
+window.addEventListener('scroll',()=>{if(isCustomerMode)requestAnimationFrame(cuSpy)},{passive:true});
+function cuCartBar(n,total){const b=$('cuCartBar');if(!b)return;b.disabled=!n;b.innerHTML=`<span>🛒 View cart${n?' · '+n+' item'+(n>1?'s':''):''}</span><b>${rupee(total)}</b>`}
+/* screens */
+const CU_PARENT={menu:'landing',cart:'menu',track:'menu',history:'landing'};
+function cuSet(s){const v=$('customerView');if(s==='cart'&&!customerCart.length)s='menu';v.dataset.screen=s;
+ $('cuScreenTitle').textContent=s==='menu'?(RF.brand.name||'Menu'):({cart:'Your order',track:'Order tracking',history:'My orders'})[s]||'';
+ $('cuBack').classList.toggle('hidden',s==='landing');$('cuHelp').classList.add('hidden');window.scrollTo(0,0);if(s==='menu')setTimeout(cuSpy,60)}
+function cuGo(s){if(s==='cart'&&!customerCart.length)return;history.pushState({cu:s},'');cuSet(s)}
+window.addEventListener('popstate',e=>{if(isCustomerMode)cuSet((e.state&&e.state.cu)||'landing')});
+/* order history (this phone) */
+function cuHistGet(){try{return JSON.parse(localStorage.getItem('rf_hist')||'[]')}catch(e){return[]}}
+function cuSaveHist(id,n){const h=cuHistGet().filter(x=>x.id!==id);h.unshift({id,n,t:Date.now()});try{localStorage.setItem('rf_hist',JSON.stringify(h.slice(0,10)))}catch(e){}}
+async function cuShowHist(){cuGo('history');const box=$('cuHistList'),h=cuHistGet();if(!h.length){box.innerHTML='<div class="card"><p class="muted">No orders yet on this phone.</p></div>';return}
+ box.innerHTML='<p class="muted" style="padding:6px 4px">Loading…</p>';
+ const rows=await Promise.all(h.map(async x=>{try{const s=await getDoc(doc(db,'orders',x.id));return s.exists()?{id:x.id,...s.data()}:{id:x.id,orderNumber:x.n,gone:1}}catch(e){return{id:x.id,orderNumber:x.n,gone:1}}}));
+ box.innerHTML=rows.map(o=>`<button type="button" class="card cu-hrow" data-hist="${esc(o.id)}" data-n="${esc(o.orderNumber||'')}"><div><b>${esc(o.orderNumber||o.id)}</b><div class="small muted">${o.table?'Table '+esc(o.table)+' · ':''}${o.createdAt&&o.createdAt.toDate?esc(o.createdAt.toDate().toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})):''}</div></div><div style="text-align:right"><b>${o.gone?'':rupee(o.total)}</b><div class="small muted">${o.gone?'':esc(o.status||'new')}</div></div></button>`).join('')}
+document.addEventListener('click',e=>{if(!$('customerView')||!isCustomerMode)return;
+ const g=e.target.closest('[data-cu-go]'),bk=e.target.closest('[data-cu-back]'),hp=e.target.closest('[data-cu-help]'),ch=e.target.closest('[data-chip]'),hs=e.target.closest('[data-hist]'),hb=e.target.closest('[data-cu-hist]');
+ if(g)cuGo(g.dataset.cuGo);if(bk)cuGo(CU_PARENT[$('customerView').dataset.screen]||'landing');if(hp)$('cuHelp').classList.toggle('hidden');if(hb)cuShowHist();
+ if(e.target.closest('[data-svc]'))setTimeout(()=>$('cuHelp').classList.add('hidden'),500);
+ if(ch){const s=document.querySelector(`#customerMenu .cu-sec[data-sec="${CSS.escape(ch.dataset.chip)}"]`);if(s){ch.parentElement.querySelectorAll('.cu-chip').forEach(c=>c.classList.toggle('on',c===ch));s.scrollIntoView({behavior:'smooth',block:'start'})}}
+ if(hs){customerOrderId=hs.dataset.hist;RF.lastOrder=null;$('customerOrderId').textContent='Order ID: '+(hs.dataset.n||'');$('customerOrderCard').classList.remove('hidden');startCustomerPolling();cuGo('track')}});
+$('cuSearch').oninput=e=>{RF.q=e.target.value.trim();renderCustomerMenu()};
+function paintLanding(){const x=RF.brand||{};document.documentElement.style.setProperty('--ca',/^#[0-9a-f]{6}$/i.test(x.themeColor||'')?x.themeColor:'#2F8F83');if(!$('cuLanding'))return;
+ $('cuService').textContent=x.service||'Dine-in ordering';$('cuAddress').textContent=x.address||'';$('cuTable').textContent=customerTable?'Table '+customerTable:'';$('cuSubTable').textContent=customerTable?'· Table '+customerTable:'';
+ $('cuHoursF').classList.toggle('hidden',!x.hours);$('cuHours').textContent=x.hours||'';
+ const ph=String(x.phone||'').replace(/[^\d+]/g,'');$('cuPhoneF').classList.toggle('hidden',!ph);$('cuPhone').textContent=x.phone||'';$('cuPhoneF').href=ph?'tel:'+ph:'#';
+ $('cuBanner').style.backgroundImage=x.bannerData?`url("${x.bannerData}")`:'';if($('customerView').dataset.screen==='menu')cuSet('menu')}
+/* admin: customer page settings */
+function imgToData(file,maxDim,cap){return new Promise((res,rej)=>{const img=new Image(),u=URL.createObjectURL(file);img.onload=()=>{const k=Math.min(1,maxDim/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*k));c.height=Math.max(1,Math.round(img.height*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);let q=.85,d;do{d=c.toDataURL('image/jpeg',q);q-=.08}while(d.length>cap&&q>.3);d.length>cap*1.3?rej(new Error('Image is too detailed. Try a smaller photo.')):res(d)};img.onerror=()=>rej(new Error('This file is not a readable image.'));img.src=u})}
+function paintBannerPrev(src){const i=$('restBannerPrev');if(!i)return;i.src=src||'';i.classList.toggle('hidden',!src)}
+const _ls59=loadSettings;
+loadSettings=async function(){await _ls59();try{await loadBrand();const x=RF.brand||{};$('restService').value=x.service||'';$('restHours').value=x.hours||'';$('restColor').value=/^#[0-9a-f]{6}$/i.test(x.themeColor||'')?x.themeColor:'#2F8F83';RF.pendingBanner=undefined;paintBannerPrev(x.bannerData)}catch(e){}};
+$('restBannerFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{RF.pendingBanner=await imgToData(f,1000,230000);paintBannerPrev(RF.pendingBanner)}catch(err){msg($('adminMsg'),err.message)}};
+$('restBannerClear').onclick=()=>{RF.pendingBanner='';$('restBannerFile').value='';paintBannerPrev('')};
+const _sv59=$('saveSettingsBtn').onclick;
+$('saveSettingsBtn').onclick=async()=>{const extra={service:$('restService').value.trim().slice(0,40),hours:$('restHours').value.trim().slice(0,60),themeColor:$('restColor').value,updatedAt:serverTimestamp(),updatedBy:currentUser.uid};if(RF.pendingBanner!==undefined)extra.bannerData=RF.pendingBanner;
+ try{await setDoc(doc(db,'restaurants','demo'),extra,{merge:true});RF.pendingBanner=undefined}catch(e){return msg($('adminMsg'),'Could not save customer page settings: '+(e.code||e.message))}
+ await _sv59()};
+if(isCustomerMode){history.replaceState({cu:'landing'},'');cuSet('landing');cuCartBar(0,0);paintLanding()}
 </script>
 </body></html>
