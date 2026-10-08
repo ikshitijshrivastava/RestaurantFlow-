@@ -340,6 +340,100 @@ body:has(#customerView:not(.hidden)){background:#FAFAF7}
 .bill-prev{font:13px/1.32 "Courier New",Courier,monospace;background:#fff;border:1px dashed #b8c0c8;padding:10px;margin:0;white-space:pre;color:#111;width:max-content;min-width:100%}
 .aud-chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
 .audit-table td.money{text-align:right;white-space:nowrap}
+
+/* ===== V6.2: guest profile form, customer analytics, action colours, themes and patterns ===== */
+#joinView{--c:var(--ca,#2F8F83);--soft:color-mix(in srgb,var(--c) 11%,#fff);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#26303b;min-height:100vh;max-width:560px;margin:0 auto}
+#joinView .cu-top{position:sticky;top:0;z-index:30;height:56px;display:flex;align-items:center;gap:10px;padding:0 14px;background:#fff;border-bottom:1px solid #ECEEF0}
+#joinView .cu-top .brand-logo{height:34px;max-width:90px;border-radius:6px}
+#joinView .cu-ttl{font-weight:600;font-size:17px}
+.jn-page{padding:12px 14px 40px}
+#joinView h1{font-family:inherit;font-size:22px;margin:4px 0 6px;color:#26303b}
+#joinView .card{background:#fff;border:1px solid #ECEEF0;box-shadow:none;border-radius:14px;padding:18px}
+#joinView .btn{background:var(--c);color:#fff;border-radius:12px;box-shadow:none;font-weight:600;min-height:50px}
+#joinView .input{background:#fff;border-color:#DADFE4}
+.jn-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:420px){.jn-two{grid-template-columns:1fr}}
+.jn-chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.jn-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #DADFE4;border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;background:#fff;min-height:40px}
+.jn-chip{position:relative}.jn-chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}.jn-chip:has(input:checked){background:var(--soft);border-color:var(--c);color:var(--c);font-weight:600}
+.jn-check{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:10px 0;line-height:1.4}.jn-check input{width:22px;height:22px;flex:none;margin-top:1px}
+/* range headers */
+.range-head{grid-column:1/-1;font-weight:700;font-size:14px;color:var(--ink);margin-bottom:2px}
+.grid>div>label:first-child{font-weight:600}
+/* customer analytics */
+.cs-sec{margin-top:16px}.cs-sec>h3{margin:0 0 8px}
+.cs-table td,.cs-table th{white-space:nowrap}.cs-name{font-weight:600}.cs-tag{display:inline-block;background:var(--soft);border-radius:999px;padding:1px 9px;font-size:12px;margin-right:4px}
+.cs-allergy{background:#F8DEDA;color:#8F2B2B;border-radius:999px;padding:1px 9px;font-size:12px;margin-right:4px;font-weight:600}
+.cs-row{cursor:pointer}.cs-row:hover td{background:var(--mist)}
+.cs-mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:10px 0}.cs-mini>div{background:var(--mist);border-radius:10px;padding:8px 10px}.cs-mini b{display:block;font-size:17px}
+.tab[data-tab=customers]:before{content:'☺'}
+/* themes: patterns */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body[data-pat="dots"]::before{background-image:radial-gradient(color-mix(in srgb,var(--pc,#777) 24%,transparent) 1.3px,transparent 1.7px);background-size:20px 20px}
+body[data-pat="grid"]::before{background-image:linear-gradient(color-mix(in srgb,var(--pc,#777) 13%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--pc,#777) 13%,transparent) 1px,transparent 1px);background-size:26px 26px}
+body[data-pat="stripes"]::before{background-image:repeating-linear-gradient(45deg,color-mix(in srgb,var(--pc,#777) 11%,transparent) 0 2px,transparent 2px 16px)}
+body[data-pat="scallops"]::before{background-image:radial-gradient(circle at 50% 0,transparent 0 9px,color-mix(in srgb,var(--pc,#777) 16%,transparent) 9px 10px,transparent 10px);background-size:20px 10px}
+body[data-pat="diamonds"]::before{background-image:repeating-linear-gradient(45deg,color-mix(in srgb,var(--pc,#777) 11%,transparent) 0 1px,transparent 1px 18px),repeating-linear-gradient(-45deg,color-mix(in srgb,var(--pc,#777) 11%,transparent) 0 1px,transparent 1px 18px)}
+body[data-pat]:not([data-pat="none"]) #customerView{background:transparent}
+.sw-row{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}.sw{width:38px;height:38px;min-width:38px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px #cbd5e1;cursor:pointer;padding:0}.sw.on{box-shadow:0 0 0 3px #26303b}
+
+/* action colours: one hue per action */
+:is(#staffView,#adminView,.rf-modal) [data-staff-status="accepted"]{--act:#2F8F5B;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-order-status="accepted"]{--act:#2F8F5B;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-go="all"]{--act:#2F8F5B;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-pick-items]{--act:#3A6EA5;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-go="sel"]{--act:#3A6EA5;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-decline-order]{--act:#B3453D;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-order-status="declined"]{--act:#B3453D;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-go="no"]{--act:#B3453D;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-del-menu]{--act:#B3453D;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-del-offer]{--act:#B3453D;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-cat-del]{--act:#B3453D;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-staff-status="preparing"]{--act:#B97A12;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-order-status="preparing"]{--act:#B97A12;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-kitchen-action="preparing"]{--act:#B97A12;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-staff-status="ready"]{--act:#1D8A8A;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-order-status="ready"]{--act:#1D8A8A;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-kitchen-action="ready"]{--act:#1D8A8A;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-staff-status="delivered"]{--act:#5A5EB9;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-order-status="delivered"]{--act:#5A5EB9;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-deliver]{--act:#5A5EB9;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-staff-collect]{--act:#7B4BA8;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-collect-order]{--act:#7B4BA8;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView) #recordPaymentBtn{--act:#7B4BA8;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView) #staffRecordPay{--act:#7B4BA8;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+:is(#staffView,#adminView,.rf-modal) [data-adj-bill]{--act:#B04A86;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-bill-edit]{--act:#B04A86;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-edit-bill]{--act:#B04A86;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-refund-open]{--act:#D9622B;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-staff-status="closed"]{--act:#4B5563;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-close-bill]{--act:#4B5563;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-print-kot]{--act:#8A6D3B;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-print-bill]{--act:#53708C;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView) #audPrint{--act:#53708C;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-bp="print"]{--act:#53708C;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-move-table]{--act:#2B8CB5;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-csv]{--act:#5C8A2E;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView) #audCsv{--act:#5C8A2E;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-cs-csv]{--act:#5C8A2E;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-offer-toggle]{--act:#A8841B;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-stock-menu]{--act:#A8841B;background:color-mix(in srgb,var(--act) 13%,#fff)!important;color:var(--act)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--act) 34%,#fff)!important}
+:is(#staffView,#adminView,.rf-modal) [data-svc-done]{--act:#2F8F5B;background:var(--act)!important;color:#fff!important;box-shadow:none!important}
+#dashCards .card[data-dash="new"]{--act:#3A6EA5;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+#dashCards .card[data-dash="kitchen"]{--act:#B97A12;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+#dashCards .card[data-dash="accepted"]{--act:#B97A12;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+#dashCards .card[data-dash="preparing"]{--act:#D9822B;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+#dashCards .card[data-dash="ready"]{--act:#1D8A8A;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+#dashCards .card[data-dash="delivered"]{--act:#7B4BA8;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="orders"]{--act:#3A6EA5;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="sales"]{--act:#2F8F5B;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="gst"]{--act:#6B7280;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="collected"]{--act:#1D8A8A;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="cash"]{--act:#A8841B;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="pending"]{--act:#D9822B;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="discounts"]{--act:#B04A86;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="tips"]{--act:#7B4BA8;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="refunds"]{--act:#D9622B;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
+.sum-card[data-sum="avg"]{--act:#53708C;background:color-mix(in srgb,var(--act) 15%,#fff)!important;border-left:5px solid var(--act)}
 </style>
 <script>
 // Self-contained QR generator based on qrcode-terminal vendor/QRCode (MIT).
@@ -1611,6 +1705,7 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
       <div class="cu-facts"><span>🍽 <b id="cuTable"></b></span><span id="cuHoursF" class="hidden">🕒 <b id="cuHours"></b></span><a id="cuPhoneF" class="hidden" href="#">📞 <b id="cuPhone"></b></a></div>
       <button type="button" class="btn cu-primary" data-cu-go="menu">Order now</button>
       <button type="button" class="btn light" data-cu-hist>My orders</button>
+      <button type="button" class="btn light" data-cu-join>★ Join our guest club</button>
     </div>
   </div>
   <div id="cuMenuScreen" class="cu-screen">
@@ -1645,11 +1740,35 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
   <div id="cuTrack" class="cu-screen">
     <div id="customerOrderCard" class="card hidden"><div class="top"><div><h2>Order Tracking</h2><div id="customerOrderId" class="muted"></div></div><span id="customerOrderStatus" class="pill"></span></div><div id="custSteps" class="steps"></div><div id="custPayBox"></div><p class="muted">Keep this page open to see your order progress.</p></div>
     <button type="button" class="btn light" data-cu-go="menu" style="width:100%">Order more</button>
+    <button type="button" class="btn light" data-cu-join style="width:100%;margin-top:8px">★ Create your guest profile (30 seconds)</button>
   </div>
   <div id="cuHistory" class="cu-screen"><div id="cuHistList"></div></div>
   <button type="button" id="cuCartBar" class="btn" data-cu-go="cart" disabled></button>
 </section>
 
+<section id="joinView" class="hidden">
+  <header class="cu-top"><img class="brand-logo hidden" alt=""><div class="cu-ttl"><span class="brand-name">RestaurantFlow</span></div></header>
+  <div class="jn-page">
+    <div id="jnForm" class="card">
+      <h1>Join our guest club</h1>
+      <p class="muted">Takes about 30 seconds. It helps us remember what you like, respect your allergies and send offers you will actually enjoy.</p>
+      <div id="jnMsg" class="msg"></div>
+      <label>Your name *</label><input id="jName" class="input" autocomplete="name" maxlength="80">
+      <label>Mobile number *</label><input id="jMobile" class="input" inputmode="numeric" autocomplete="tel" maxlength="16" placeholder="10-digit number">
+      <label>Email <span class="muted small">(optional)</span></label><input id="jEmail" class="input" type="email" autocomplete="email" maxlength="80">
+      <div class="jn-two"><div><label>Birthday <span class="muted small">(optional)</span></label><input id="jDob" class="input" type="date"></div><div><label>Anniversary <span class="muted small">(optional)</span></label><input id="jAnniv" class="input" type="date"></div></div>
+      <div class="jn-two"><div><label>Food preference</label><select id="jDiet" class="input"><option>No preference</option><option>Vegetarian</option><option>Non-vegetarian</option><option>Eggetarian</option><option>Jain</option><option>Vegan</option></select></div><div><label>Spice level</label><select id="jSpice" class="input"><option>Medium</option><option>Mild</option><option>Hot</option></select></div></div>
+      <label>Any allergies?</label><div id="jnAllergy" class="jn-chips"></div><input id="jAllergyOther" class="input" maxlength="80" placeholder="Other allergy (optional)">
+      <label>What do you love to eat?</label><div id="jnCuisine" class="jn-chips"></div>
+      <div class="jn-two"><div><label>How did you find us?</label><select id="jSource" class="input"><option>Walk-in / passing by</option><option>Instagram / Facebook</option><option>Google search or Maps</option><option>Friend or family</option><option>Event or offer</option><option>Other</option></select></div><div><label>Area / PIN code</label><input id="jArea" class="input" maxlength="40"></div></div>
+      <div class="jn-two"><div><label>Gender <span class="muted small">(optional)</span></label><select id="jGender" class="input"><option>Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></div><div></div></div>
+      <label class="jn-check"><input type="checkbox" id="jOffers"> <span>Send me offers and festival greetings by SMS / WhatsApp (you can opt out any time)</span></label>
+      <label class="jn-check"><input type="checkbox" id="jConsent"> <span>I agree that this restaurant may store these details to serve me better and contact me about my orders. *</span></label>
+      <button id="jnSubmit" class="btn" style="width:100%;margin-top:6px">Save my profile</button>
+    </div>
+    <div id="jnDone" class="card hidden"><h1>Thank you! 🎉</h1><p id="jnDoneText" class="muted"></p><p class="small muted">You can close this page. Scan your table QR whenever you want to order.</p></div>
+  </div>
+</section>
 <section id="staffView" class="hidden">
   <div id="staffNav" class="tabs"></div>
   <div id="staffMain" style="padding-left:250px">
@@ -1674,7 +1793,7 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
 <button class="tab" data-tab="reports">Reports</button>
 <button class="tab" data-tab="staff">Staff & Rights</button><button class="tab" data-tab="bulk">Bulk Setup</button>
 <button class="tab" data-tab="settings">Restaurant Settings</button>
-<button class="tab" data-tab="audit">Audit Log</button>
+<button class="tab" data-tab="customers">Customers</button><button class="tab" data-tab="audit">Audit Log</button>
 </div>
 <div id="dashboardTab" class="tabbody">
 <div class="grid">
@@ -1745,6 +1864,7 @@ window.RestaurantFlowQRCode = QRCode; window.RestaurantFlowQRErrorCorrectLevel =
   <div id="bulkMsg" class="msg"></div>
 </div>
 </div>
+<div id="customersTab" class="tabbody hidden"></div>
 <div id="auditTab" class="tabbody hidden"><div class="card"><h2>Audit Log</h2><p class="muted">Menu edits, price changes, offer changes, stock changes, permissions and other admin actions should be recorded here.</p><div id="auditList">Loading...</div></div></div>
 </section>
 </div>
@@ -1807,8 +1927,8 @@ const urlParams=new URLSearchParams(location.search);
 const hashTable=location.hash.startsWith('#table=')?decodeURIComponent(location.hash.slice(7)):'';
 const customerTableId=(urlParams.get('tableId')||'').trim();
 const customerTable=(urlParams.get('table')||hashTable||customerTableId||'').trim();
-const isCustomerMode=!!customerTable;
-if(isCustomerMode){startCustomer()}
+const isJoin=urlParams.get('join')==='1';const isCustomerMode=!!customerTable||isJoin;
+if(isJoin){startJoin()}else if(isCustomerMode){startCustomer()}
 
 $('signInBtn').addEventListener('click',async()=>{hide($('loginMsg'));const email=$('email').value.trim(),password=$('password').value;if(!email||!password){msg($('loginMsg'),'Enter email and password.');return} $('signInBtn').disabled=true;$('signInBtn').textContent='Signing in...';try{await signInWithEmailAndPassword(auth,email,password)}catch(e){msg($('loginMsg'),'Sign in failed: '+(e.code||e.message));}finally{$('signInBtn').disabled=false;$('signInBtn').textContent='Sign in'}});
 $('signOutBtn').addEventListener('click',()=>signOut(auth));
@@ -1822,7 +1942,7 @@ async function startCustomer(){
 
 onAuthStateChanged(auth,async user=>{
   if(isCustomerMode){
-    if(user) { currentUser=user; await initCustomer(); }
+    if(user) { currentUser=user; if(!isJoin)await initCustomer(); }
     return;
   }
   if(!user){$('loginView').classList.remove('hidden');$('adminView').classList.add('hidden');$('staffView').classList.add('hidden');return}
@@ -2617,12 +2737,12 @@ initStaffView=function(role,d){_initStaffView58(role,d);const nav=$('staffNav');
  paintBrand();RF.tableFilter='';RF.ordFilter='';if(role==='steward')staffShowPage('staffDashboardPage')};
 
 /* ---- period picker + summary ---- */
-const PRESETS=[['today','Today'],['yesterday','Yesterday'],['7d','Last 7 days'],['30d','Last 30 days'],['month','This month'],['custom','Custom dates']];
+const PRESETS=[['today','Today'],['yesterday','Yesterday'],['7d','Last 7 days'],['30d','Last 30 days'],['month','This month'],['90d','Last 90 days'],['year','Last 12 months'],['custom','Custom dates']];
 function presetDates(k){const t=new Date(),d=n=>{const x=new Date(t);x.setDate(x.getDate()-n);return localISO(x)};
- if(k==='yesterday')return [d(1),d(1)];if(k==='7d')return [d(6),localISO(t)];if(k==='30d')return [d(29),localISO(t)];if(k==='month')return [localISO(new Date(t.getFullYear(),t.getMonth(),1)),localISO(t)];return [localISO(t),localISO(t)]}
+ if(k==='yesterday')return [d(1),d(1)];if(k==='7d')return [d(6),localISO(t)];if(k==='30d')return [d(29),localISO(t)];if(k==='90d')return [d(89),localISO(t)];if(k==='year')return [d(364),localISO(t)];if(k==='month')return [localISO(new Date(t.getFullYear(),t.getMonth(),1)),localISO(t)];return [localISO(t),localISO(t)]}
 function mountSummary(el,withExport){
  const S=RF.rng||(RF.rng={preset:'today',from:localISO(new Date()),to:localISO(new Date())});if(S.preset!=='custom')[S.from,S.to]=presetDates(S.preset);
- el.innerHTML=`<div class="range-bar"><div><label class="small muted">Period</label><select class="input" data-r="preset">${PRESETS.map(([v,l])=>`<option value="${v}"${v===S.preset?' selected':''}>${l}</option>`).join('')}</select></div><div><label class="small muted">From</label><input class="input" type="date" data-r="from" value="${S.from}"></div><div><label class="small muted">To</label><input class="input" type="date" data-r="to" value="${S.to}"></div></div><div data-r="out"></div>`;
+ el.innerHTML=`<div class="range-bar"><div class="range-head">📅 Select report period</div><div><label class="small muted">Select period</label><select class="input" data-r="preset">${PRESETS.map(([v,l])=>`<option value="${v}"${v===S.preset?' selected':''}>${l}</option>`).join('')}</select></div><div><label class="small muted">Select date from</label><input class="input" type="date" data-r="from" value="${S.from}"></div><div><label class="small muted">Select date to</label><input class="input" type="date" data-r="to" value="${S.to}"></div></div><div data-r="out"></div>`;
  const out=el.querySelector('[data-r=out]'),q=k=>el.querySelector(`[data-r=${k}]`);
  el._reload=()=>{if(S.preset!=='custom'){[S.from,S.to]=presetDates(S.preset);q('from').value=S.from;q('to').value=S.to}renderRangeInto(out,S.from,S.to,withExport)};
  q('preset').onchange=()=>{S.preset=q('preset').value;el._reload()};
@@ -2633,7 +2753,7 @@ async function renderRangeInto(out,from,to,withExport){
  const tok=out._tok=(out._tok||0)+1;
  if(!from||!to){out.innerHTML='<p class="muted">Pick both dates.</p>';return}
  if(from>to){out.innerHTML='<p class="muted">The From date is after the To date.</p>';return}
- if((new Date(to)-new Date(from))/864e5>92){out.innerHTML='<p class="muted">Please choose a period of 92 days or less.</p>';return}
+ if((new Date(to)-new Date(from))/864e5>370){out.innerHTML='<p class="muted">Please choose a period of 12 months or less.</p>';return}
  out.innerHTML='<p class="muted">Loading…</p>';
  try{const [os,ps]=await Promise.all([rangeDocs('orders',from,to),rangeDocs('payments',from,to)]);if(tok!==out._tok)return;out._d={os,ps};
   const one=from===to,title=one?(from===localISO(new Date())?'Today':from):from+' to '+to;
@@ -2767,7 +2887,7 @@ document.addEventListener('click',e=>{if(!$('customerView')||!isCustomerMode)ret
  if(ch){const s=document.querySelector(`#customerMenu .cu-sec[data-sec="${CSS.escape(ch.dataset.chip)}"]`);if(s){ch.parentElement.querySelectorAll('.cu-chip').forEach(c=>c.classList.toggle('on',c===ch));s.scrollIntoView({behavior:'smooth',block:'start'})}}
  if(hs){customerOrderId=hs.dataset.hist;RF.lastOrder=null;$('customerOrderId').textContent='Order ID: '+(hs.dataset.n||'');$('customerOrderCard').classList.remove('hidden');startCustomerPolling();cuGo('track')}});
 $('cuSearch').oninput=e=>{RF.q=e.target.value.trim();renderCustomerMenu()};
-function paintLanding(){const x=RF.brand||{};document.documentElement.style.setProperty('--ca',/^#[0-9a-f]{6}$/i.test(x.themeColor||'')?x.themeColor:'#2F8F83');if(!$('cuLanding'))return;
+function paintLanding(){const x=RF.brand||{};if(!$('cuLanding'))return;
  $('cuService').textContent=x.service||'Dine-in ordering';$('cuAddress').textContent=x.address||'';$('cuTable').textContent=customerTable?'Table '+customerTable:'';$('cuSubTable').textContent=customerTable?'· Table '+customerTable:'';
  $('cuHoursF').classList.toggle('hidden',!x.hours);$('cuHours').textContent=x.hours||'';
  const ph=String(x.phone||'').replace(/[^\d+]/g,'');$('cuPhoneF').classList.toggle('hidden',!ph);$('cuPhone').textContent=x.phone||'';$('cuPhoneF').href=ph?'tel:'+ph:'#';
@@ -2944,7 +3064,7 @@ async function loadAuditData(){const S=RF.aud;if(S.preset!=='custom')[S.from,S.t
  $('auditList').innerHTML='<p class="muted">Loading…</p>';try{RF.audRows=await rangeDocs('auditLogs',S.from,S.to);paintAudit()}catch(e){$('auditList').innerHTML='<p class="muted">Could not load the audit log: '+esc(e.code||e.message)+'</p>'}}
 loadAudit=async function(){const S=RF.aud||(RF.aud={preset:'7d',from:'',to:'',cat:'',sort:'time_desc',q:''});
  if(!$('audFrom')){$('auditTab').innerHTML=`<div class="card"><div class="top"><div><h2>Audit report</h2><p class="muted">Every discount, refund, bill change, stock, menu, offer and staff action. Filter by period and category, sort, print or download.</p></div><div class="row-actions"><button class="btn light" id="audCsv">⬇ CSV</button><button class="btn light" id="audPrint">🖨 Print</button></div></div>
-  <div class="range-bar"><div><label class="small muted">Period</label><select id="audPreset" class="input">${PRESETS.map(([v,l])=>`<option value="${v}"${v===S.preset?' selected':''}>${l}</option>`).join('')}</select></div><div><label class="small muted">From</label><input id="audFrom" type="date" class="input"></div><div><label class="small muted">To</label><input id="audTo" type="date" class="input"></div>
+  <div class="range-bar"><div class="range-head">📅 Select report period</div><div><label class="small muted">Select period</label><select id="audPreset" class="input">${PRESETS.map(([v,l])=>`<option value="${v}"${v===S.preset?' selected':''}>${l}</option>`).join('')}</select></div><div><label class="small muted">Select date from</label><input id="audFrom" type="date" class="input"></div><div><label class="small muted">Select date to</label><input id="audTo" type="date" class="input"></div>
   <div><label class="small muted">Category</label><select id="audCat" class="input"><option value="">All categories</option>${AUD_CATS.map(([k,l])=>`<option value="${k}">${l}</option>`).join('')}</select></div><div><label class="small muted">Sort by</label><select id="audSort" class="input"><option value="time_desc">Newest first</option><option value="time_asc">Oldest first</option><option value="cat">Category</option><option value="user">User</option><option value="amt">Amount (high to low)</option></select></div><div><label class="small muted">Search</label><input id="audQ" class="input" placeholder="order, user, reason…"></div></div>
   <div id="audSummary"></div><div id="auditList"></div></div>`;
   $('audPreset').onchange=()=>{S.preset=$('audPreset').value;loadAuditData()};$('audFrom').onchange=$('audTo').onchange=()=>{S.preset='custom';S.from=$('audFrom').value;S.to=$('audTo').value;$('audPreset').value='custom';loadAuditData()};
@@ -2954,5 +3074,123 @@ loadAudit=async function(){const S=RF.aud||(RF.aud={preset:'7d',from:'',to:'',ca
  await loadAuditData()};
 document.addEventListener('click',e=>{const c=e.target.closest('[data-aud-cat]');if(c&&RF.aud){RF.aud.cat=RF.aud.cat===c.dataset.audCat?'':c.dataset.audCat;$('audCat').value=RF.aud.cat;paintAudit()}});
 if(isCustomerMode)startPricingFeed();
+
+/* ===== V6.2: guest profile (QR form), customer analytics, themes and patterns ===== */
+/* ---- labels on filter fields ---- */
+(function(){const L=[['reportFrom','Select date from'],['reportTo','Select date to'],['reportGroup','Report type'],['orderStatusFilter','Status'],['orderTableFilter','Table'],['orderDateFilter','Select date'],['billingFilter','Show bills'],['billingSearch','Search bills']];
+ L.forEach(([id,t])=>{const el=$(id);if(!el||el.parentElement.dataset.lbl)return;const d=document.createElement('div');d.dataset.lbl=1;d.innerHTML=`<label class="small muted" style="font-weight:600">${t}</label>`;el.parentElement.insertBefore(d,el);d.appendChild(el)})})();
+/* ---- QR guest profile form ---- */
+const JN_ALLERGY=['Nuts','Dairy','Gluten','Seafood','Egg','Soy'],JN_CUIS=['North Indian','South Indian','Chinese','Continental','Italian','Street food','Desserts','Beverages'];
+const jnChips=(id,list)=>{const b=$(id);if(b)b.innerHTML=list.map(x=>`<label class="jn-chip"><input type="checkbox" value="${esc(x)}"><span>${esc(x)}</span></label>`).join('')};jnChips('jnAllergy',JN_ALLERGY);jnChips('jnCuisine',JN_CUIS);
+const jnPicked=id=>[...document.querySelectorAll('#'+id+' input:checked')].map(i=>i.value);
+async function startJoin(){['loginView','adminView','staffView','customerView'].forEach(i=>$(i).classList.add('hidden'));$('joinView').classList.remove('hidden');
+ try{const q=new URLSearchParams(location.search).get('m')||localStorage.getItem('rf_mobile')||'';$('jMobile').value=q}catch(e){}
+ try{await signInAnonymously(auth)}catch(e){msg($('jnMsg'),'Could not start: '+(e.code||e.message))}}
+$('jnSubmit').onclick=async()=>{
+ const name=$('jName').value.trim(),mobile=normMobile($('jMobile').value),email=$('jEmail').value.trim(),dob=$('jDob').value,an=$('jAnniv').value,today=localISO(new Date());
+ if(name.length<2)return msg($('jnMsg'),'Please enter your name.');if(!mobile)return msg($('jnMsg'),'Enter a valid 10-digit mobile number.');
+ if(email&&!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email))return msg($('jnMsg'),'That email address does not look right.');
+ if((dob&&dob>today)||(an&&an>today))return msg($('jnMsg'),'Birthday and anniversary cannot be in the future.');
+ if(!$('jConsent').checked)return msg($('jnMsg'),'Please tick the agreement box to continue.');if(!currentUser)return msg($('jnMsg'),'Please wait a moment and try again.');
+ const old=(()=>{try{return localStorage.getItem('rf_profile')===mobile}catch(e){return false}})(),btn=$('jnSubmit');btn.disabled=true;
+ const data={restaurantId:'demo',mobile,name,email,dob,anniversary:an,gender:$('jGender').value,diet:$('jDiet').value,spice:$('jSpice').value,allergies:jnPicked('jnAllergy'),allergyOther:$('jAllergyOther').value.trim(),favourites:jnPicked('jnCuisine'),howFound:$('jSource').value,area:$('jArea').value.trim(),offersOptIn:$('jOffers').checked,consent:true,consentAt:serverTimestamp(),uid:currentUser.uid,updatedAt:serverTimestamp(),via:'qr'};if(!old)data.createdAt=serverTimestamp();
+ try{await setDoc(doc(db,'customers',mobile),data,{merge:true});try{localStorage.setItem('rf_profile',mobile);localStorage.setItem('rf_mobile',mobile)}catch(e){}
+  $('jnForm').classList.add('hidden');$('jnDone').classList.remove('hidden');$('jnDoneText').textContent=`Welcome, ${name.split(' ')[0]}! Your profile is saved${data.offersOptIn?' and you will hear from us about offers':''}.`;window.scrollTo(0,0)}
+ catch(e){btn.disabled=false;msg($('jnMsg'),(e.code==='permission-denied')?'A profile already exists for this number. It can only be changed from the phone that created it, or ask our staff to help.':'Could not save: '+(e.code||e.message))}};
+document.addEventListener('click',e=>{if(e.target.closest('[data-cu-join]')){let m='';try{m=($('customerMobile').value||localStorage.getItem('rf_mobile')||'')}catch(x){}location.href=location.pathname+'?join=1'+(m?'&m='+encodeURIComponent(m):'')}});
+try{if(localStorage.getItem('rf_profile'))document.querySelectorAll('[data-cu-join]').forEach(b=>b.classList.add('hidden'))}catch(e){}
+async function showJoinQR(){const url=location.href.split('#')[0].split('?')[0]+'?join=1',w=modalShell(`<h3>Guest profile QR</h3><p class="small muted">Guests scan this to fill a 30-second profile form. Put it on tables, the bill folder or the counter.</p><div style="text-align:center;padding:8px"><canvas id="jqCanvas" style="width:260px;height:260px;image-rendering:pixelated;background:#fff"></canvas></div><p class="small" style="word-break:break-all">${esc(url)}</p><div class="row-actions"><button class="btn" data-jq="print">🖨 Print poster</button><button class="btn light" data-jq="x">Close</button></div>`);
+ renderRestaurantFlowQR(w.querySelector('#jqCanvas'),url,260);
+ w.addEventListener('click',e=>{const b=e.target.closest('[data-jq]');if(!b)return;if(b.dataset.jq==='x')return w.remove();const bn=RF.brand||{};printHTML(`<html><head><meta charset="utf-8"><style>@page{size:A5;margin:12mm}body{font-family:Arial,sans-serif;text-align:center;color:#222}h1{margin:8px 0}img.q{width:210px}</style></head><body>${bn.logoData?`<img src="${bn.logoData}" style="max-height:70px">`:''}<h1>${esc(bn.name||'Our restaurant')}</h1><h2>Join our guest club</h2><p>Scan with your phone camera.<br>Tell us what you love — we remember it, and send offers you will enjoy.</p><img class="q" src="${w.querySelector('#jqCanvas').toDataURL('image/png')}"><p style="font-size:12px;color:#666">It takes about 30 seconds.</p></body></html>`)})}
+/* ---- analytics ---- */
+const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],SLOTS=['Breakfast (before 11)','Lunch (11–3)','Snacks (3–7)','Dinner (7–11)','Late night'];
+const slotOf=h=>h<11?SLOTS[0]:h<15?SLOTS[1]:h<19?SLOTS[2]:h<23?SLOTS[3]:SLOTS[4];
+const maskM=m=>RF.cs&&RF.cs.mask&&m?m.slice(0,2)+'•••••'+m.slice(-3):m;
+const topKey=o=>Object.entries(o).sort((a,b)=>b[1]-a[1])[0];
+function csAggregate(os,profiles){const by={};let anon=0,sales=0;
+ os.filter(liveSale).forEach(o=>{sales++;const m=normMobile(o.mobile||o.customerMobile);if(!m){anon++;return}
+  const c=by[m]||(by[m]={mobile:m,orders:0,days:new Set(),spend:0,items:{},pay:{},dow:{},slot:{},kind:{veg:0,nonveg:0,egg:0,other:0},first:0,last:0,offers:0,list:[]});
+  const t=tsMs(o.createdAt),tot=orderTotal(o),d=new Date(t);c.orders++;c.spend+=tot;c.days.add(localISO(d));c.first=c.first?Math.min(c.first,t):t;c.last=Math.max(c.last,t);
+  orderItems(o).forEach(i=>{const n=itemName(i),q=itemQty(i);c.items[n]=(c.items[n]||0)+q;c.kind[foodKind(i.foodType)]+=q});
+  const pm=o.paymentMethod||'—';c.pay[pm]=(c.pay[pm]||0)+1;c.dow[d.getDay()]=(c.dow[d.getDay()]||0)+1;const s=slotOf(d.getHours());c.slot[s]=(c.slot[s]||0)+1;if(Number(o.offerDiscount)>0)c.offers++;c.list.push({t,tot,table:o.table||'',n:orderLabel(o)})});
+ Object.values(by).forEach(c=>{c.visits=c.days.size;c.avg=c.orders?c.spend/c.orders:0;c.fav=(topKey(c.items)||[''])[0];c.p=profiles[c.mobile]||null;c.list.sort((a,b)=>b.t-a.t)});
+ return {by,anon,sales}}
+function csList(){const S=RF.cs,A=S.agg,P=S.profiles,q=(S.q||'').toLowerCase();let rows=Object.values(A.by).map(c=>({...c}));
+ if(S.show==='all')Object.values(P).forEach(p=>{if(!A.by[p.mobile])rows.push({mobile:p.mobile,orders:0,visits:0,spend:0,avg:0,last:0,fav:'',p,items:{},list:[]})});
+ rows=rows.filter(r=>!q||(r.p&&String(r.p.name||'').toLowerCase().includes(q))||r.mobile.includes(q));
+ const cmp={visits:(a,b)=>b.visits-a.visits||b.spend-a.spend,spend:(a,b)=>b.spend-a.spend,recent:(a,b)=>b.last-a.last,absent:(a,b)=>(a.last||1e15)-(b.last||1e15),name:(a,b)=>String(a.p&&a.p.name||'~').localeCompare(String(b.p&&b.p.name||'~'))}[S.sort]||((a,b)=>b.visits-a.visits);return rows.sort(cmp)}
+const nameOf=r=>r.p&&r.p.name?r.p.name:'Guest '+(r.mobile?r.mobile.slice(-3):'');
+function ordered(title,pairs,fmt){const max=Math.max(1,...pairs.map(x=>x[1]));return `<div class="rep-block"><h3>${esc(title)}</h3>${pairs.map(([k,v])=>`<div class="bar-row"><span class="bar-label">${esc(k)}</span><span class="bar-track"><i style="width:${v?Math.max(3,v/max*100):0}%"></i></span><b>${fmt(v)}</b></div>`).join('')||'<p class="muted small">No data.</p>'}</div>`}
+const nextOcc=s=>{const m=/^\d{4}-(\d{2})-(\d{2})$/.exec(s||'');if(!m)return null;const n=new Date(),t=new Date(n.getFullYear(),+m[1]-1,+m[2]);if(t<new Date(n.getFullYear(),n.getMonth(),n.getDate()))t.setFullYear(n.getFullYear()+1);return Math.round((t-new Date(n.getFullYear(),n.getMonth(),n.getDate()))/864e5)};
+function csPaint(){const S=RF.cs,A=S.agg,P=Object.values(S.profiles),all=Object.values(A.by),n=all.length;if(!$('csOut'))return;
+ const repeat=all.filter(c=>c.visits>=2).length,tot=all.reduce((a,c)=>a+c.spend,0),ord=all.reduce((a,c)=>a+c.orders,0),vis=all.reduce((a,c)=>a+c.visits,0);
+ const c4=(l,v,s)=>`<div class="card"><b>${l}</b><div class="metric">${v}</div><div class="small">${s||'&nbsp;'}</div></div>`;
+ const freq={'1 visit':0,'2 visits':0,'3–4 visits':0,'5+ visits':0};all.forEach(c=>{freq[c.visits>=5?'5+ visits':c.visits>=3?'3–4 visits':c.visits===2?'2 visits':'1 visit']++});
+ const dishQ={},dishG={},kind={Veg:0,'Non-veg':0,Egg:0,Other:0},pay={},dow=[0,0,0,0,0,0,0],slot=Object.fromEntries(SLOTS.map(s=>[s,0]));let offerOrders=0;
+ all.forEach(c=>{Object.entries(c.items).forEach(([k,v])=>{dishQ[k]=(dishQ[k]||0)+v;dishG[k]=(dishG[k]||0)+1});kind.Veg+=c.kind.veg;kind['Non-veg']+=c.kind.nonveg;kind.Egg+=c.kind.egg;kind.Other+=c.kind.other;Object.entries(c.pay).forEach(([k,v])=>pay[k]=(pay[k]||0)+v);Object.entries(c.dow).forEach(([k,v])=>dow[k]+=v);Object.entries(c.slot).forEach(([k,v])=>slot[k]+=v);offerOrders+=c.offers});
+ const span=(new Date(S.to)-new Date(S.from))/864e5,lapsed=all.filter(c=>c.visits>=2&&(Date.now()-c.last)/864e5>=30).sort((a,b)=>b.spend-a.spend).slice(0,15);
+ const pc=(f)=>{const o={};P.forEach(p=>{[].concat(f(p)||[]).filter(Boolean).forEach(k=>o[k]=(o[k]||0)+1)});return o};
+ const age={'Under 25':0,'25–34':0,'35–44':0,'45+':0};P.forEach(p=>{const y=+(p.dob||'').slice(0,4);if(y){const a=new Date().getFullYear()-y;age[a<25?'Under 25':a<35?'25–34':a<45?'35–44':'45+']++}});
+ const soon=[];P.forEach(p=>{[['Birthday',p.dob],['Anniversary',p.anniversary]].forEach(([k,v])=>{const d=nextOcc(v);if(d!=null&&d<=14)soon.push({p,k,d})})});soon.sort((a,b)=>a.d-b.d);
+ const rows=csList();
+ $('csOut').innerHTML=`<div class="cs-sec"><div class="card"><h2>Overview</h2><p class="muted small">${S.from} to ${S.to}. A visit is one day on which a guest ordered. Orders without a mobile number cannot be linked to a guest.</p></div><div class="grid">${c4('Guest profiles',P.length,'collected by QR')}${c4('Guests who ordered',n,A.anon?A.anon+' orders had no mobile':'all orders identified')}${c4('Repeat guests',repeat,n?Math.round(repeat/n*100)+'% of guests':'')}${c4('Avg visits per guest',n?(vis/n).toFixed(1):'0','in this period')}${c4('Avg bill',formatMoney(ord?tot/ord:0),'identified guests')}${c4('Identified sales',formatMoney(tot),A.sales?Math.round((A.sales-A.anon)/A.sales*100)+'% of orders':'')}</div></div>
+ <div class="cs-sec"><div class="card"><h2>Visit frequency and habits</h2><div class="rep-grid">${ordered('Guests by number of visits',Object.entries(freq),v=>v)}${ordered('Visits by weekday',DOW.map((d,i)=>[d,dow[i]]),v=>v)}${ordered('Orders by time of day',Object.entries(slot),v=>v)}${ordered('Payment mode',Object.entries(pay).sort((a,b)=>b[1]-a[1]),v=>v)}</div></div></div>
+ <div class="cs-sec"><div class="card"><h2>What guests choose</h2><div class="rep-grid">${ordered('Top dishes (pieces ordered)',Object.entries(dishQ).sort((a,b)=>b[1]-a[1]).slice(0,10),v=>v)}${ordered('Most loved (distinct guests)',Object.entries(dishG).sort((a,b)=>b[1]-a[1]).slice(0,10),v=>v)}${ordered('Food type mix (pieces)',Object.entries(kind),v=>v)}${ordered('Orders using an offer',[['With offer',offerOrders],['Without offer',Math.max(0,ord-offerOrders)]],v=>v)}</div></div></div>
+ ${span>=45&&lapsed.length?`<div class="cs-sec"><div class="card"><h2>Win-back list</h2><p class="muted small">Guests with 2+ visits who have not ordered for 30 days or more, highest spenders first.</p>${csTable(lapsed)}</div></div>`:''}
+ <div class="cs-sec"><div class="card"><div class="top"><div><h2>Guest list</h2><p class="muted small">Tap a row for the full guest card.</p></div></div>
+  <div class="range-bar"><div class="range-head">🔎 Find and sort guests</div><div><label class="small muted">Sort by</label><select id="csSort" class="input"><option value="visits">Most visits</option><option value="spend">Highest spend</option><option value="recent">Most recent visit</option><option value="absent">Longest absent</option><option value="name">Name</option></select></div><div><label class="small muted">Show</label><select id="csShow" class="input"><option value="ordered">Guests who ordered</option><option value="all">Also profiles with no orders</option></select></div><div><label class="small muted">Search name or number</label><input id="csQ" class="input" placeholder="name or mobile"></div></div>
+  ${csTable(rows.slice(0,100))}${rows.length>100?`<p class="small muted">Showing 100 of ${rows.length}. Download the CSV for all.</p>`:''}</div></div>
+ <div class="cs-sec"><div class="card"><h2>Profile insights</h2><p class="muted small">From the ${P.length} guest profiles collected (not limited to the dates above).</p><div class="rep-grid">${P.length?[ordered('Food preference',Object.entries(pc(p=>p.diet)),v=>v),ordered('Allergies to be careful about',Object.entries(pc(p=>(p.allergies||[]).concat(p.allergyOther?[p.allergyOther]:[]))),v=>v),ordered('Favourite cuisines',Object.entries(pc(p=>p.favourites)).sort((a,b)=>b[1]-a[1]),v=>v),ordered('How they found us',Object.entries(pc(p=>p.howFound)),v=>v),ordered('Age groups',Object.entries(age),v=>v),ordered('Offers opt-in',[['Yes',P.filter(p=>p.offersOptIn).length],['No',P.filter(p=>!p.offersOptIn).length]],v=>v)].join(''):'<p class="muted">No profiles yet. Print the Guest profile QR and place it on tables or the counter.</p>'}</div>
+  <h3 style="margin-top:14px">Birthdays and anniversaries in the next 14 days</h3>${soon.length?`<div class="preview"><table class="cs-table"><thead><tr><th>Guest</th><th>Occasion</th><th>In</th><th>Mobile</th><th>Offers OK</th></tr></thead><tbody>${soon.map(s=>`<tr><td class="cs-name">${esc(s.p.name)}</td><td>${s.k}</td><td>${s.d===0?'Today':s.d+' day'+(s.d>1?'s':'')}</td><td>${esc(maskM(s.p.mobile))}</td><td>${s.p.offersOptIn?'Yes':'No'}</td></tr>`).join('')}</tbody></table></div>`:'<p class="muted small">None coming up.</p>'}</div></div>`;
+ $('csSort').value=S.sort;$('csShow').value=S.show;$('csQ').value=S.q||'';
+ $('csSort').onchange=()=>{S.sort=$('csSort').value;csPaint()};$('csShow').onchange=()=>{S.show=$('csShow').value;csPaint()};$('csQ').onchange=()=>{S.q=$('csQ').value.trim();csPaint()}}
+function csTable(rows){const ago=t=>t?Math.floor((Date.now()-t)/864e5)+' d ago':'—';return `<div class="preview"><table class="cs-table"><thead><tr><th>Guest</th><th>Mobile</th><th>Visits</th><th>Orders</th><th>Total spend</th><th>Avg bill</th><th>Last visit</th><th>Favourite dish</th><th>Profile</th></tr></thead><tbody>${rows.map(r=>`<tr class="cs-row" data-guest="${esc(r.mobile)}"><td class="cs-name">${esc(nameOf(r))}</td><td>${esc(maskM(r.mobile))}</td><td>${r.visits}</td><td>${r.orders}</td><td class="money">${formatMoney(r.spend)}</td><td class="money">${formatMoney(r.avg)}</td><td>${r.last?esc(new Date(r.last).toLocaleDateString('en-IN',{day:'2-digit',month:'short'}))+' · '+ago(r.last):'—'}</td><td>${esc(r.fav||'—')}</td><td>${r.p?'✓':''}</td></tr>`).join('')||'<tr><td colspan="9" class="muted">No guests match.</td></tr>'}</tbody></table></div>`}
+async function guestCard(m){const c=RF.cs.agg.by[m]||{orders:0,visits:0,spend:0,avg:0,items:{},pay:{},dow:{},slot:{},list:[],first:0,last:0,offers:0,kind:{}},p=RF.cs.profiles[m]||null;
+ let note={};try{const s=await getDoc(doc(db,'customerNotes',m));if(s.exists())note=s.data()}catch(e){}
+ const fav=Object.entries(c.items).sort((a,b)=>b[1]-a[1]).slice(0,6),fd=topKey(c.dow),fs=topKey(c.slot),fp=topKey(c.pay),d=x=>x?new Date(x).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}):'—';
+ const w=modalShell(`<h3>${esc(p&&p.name||'Guest')} <span class="small muted">${esc(maskM(m))}</span></h3>
+ <div class="cs-mini"><div><span class="small muted">Visits</span><b>${c.visits}</b></div><div><span class="small muted">Orders</span><b>${c.orders}</b></div><div><span class="small muted">Total spend</span><b>${formatMoney(c.spend)}</b></div><div><span class="small muted">Avg bill</span><b>${formatMoney(c.avg||0)}</b></div></div>
+ <p class="small">First seen ${d(c.first)} • Last visit ${d(c.last)} • Used an offer ${c.offers||0}×</p>
+ ${c.orders?`<p class="small"><b>Habits:</b> usually ${fd?DOW[fd[0]]:'—'} • ${fs?esc(fs[0]):'—'} • pays by ${fp?esc(fp[0]):'—'}</p>${ordered('Favourite dishes',fav,v=>v)}`:'<p class="muted small">No orders in the selected period.</p>'}
+ ${p?`<h4 style="margin:12px 0 4px">Profile</h4><p class="small">${p.email?esc(p.email)+' • ':''}${p.dob?'Birthday '+esc(p.dob)+' • ':''}${p.anniversary?'Anniversary '+esc(p.anniversary)+' • ':''}Diet: ${esc(p.diet||'—')} • Spice: ${esc(p.spice||'—')}</p>${(p.allergies||[]).length||p.allergyOther?`<p>${(p.allergies||[]).map(a=>`<span class="cs-allergy">⚠ ${esc(a)}</span>`).join('')}${p.allergyOther?`<span class="cs-allergy">⚠ ${esc(p.allergyOther)}</span>`:''}</p>`:''}<p class="small">Loves: ${esc((p.favourites||[]).join(', ')||'—')} • Found us: ${esc(p.howFound||'—')} • Area: ${esc(p.area||'—')} • Offers: ${p.offersOptIn?'opted in':'not opted in'}</p>`:'<p class="muted small">No profile yet. Their orders are linked by mobile number.</p>'}
+ ${c.list.length?`<h4 style="margin:12px 0 4px">Recent orders</h4>${c.list.slice(0,6).map(o=>`<div class="top small"><span>${esc(new Date(o.t).toLocaleDateString('en-IN',{day:'2-digit',month:'short'}))} • Table ${esc(o.table||'—')} • ${esc(o.n)}</span><b>${formatMoney(o.tot)}</b></div>`).join('')}`:''}
+ <label>Staff notes <span class="muted small">(private, only admin sees)</span></label><textarea id="gNote" class="input" rows="2" maxlength="300">${esc(note.notes||'')}</textarea><label>Tags <span class="muted small">(comma separated, e.g. VIP, birthday-table)</span></label><input id="gTags" class="input" maxlength="80" value="${esc((note.tags||[]).join(', '))}">
+ <div class="row-actions"><button class="btn" data-gsave>Save notes</button><button class="btn light" data-gx>Close</button></div>`);
+ w.addEventListener('click',async e=>{if(e.target.closest('[data-gx]'))return w.remove();const b=e.target.closest('[data-gsave]');if(!b)return;b.disabled=true;try{await setDoc(doc(db,'customerNotes',m),{mobile:m,notes:w.querySelector('#gNote').value.trim(),tags:w.querySelector('#gTags').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,8),updatedAt:serverTimestamp(),updatedBy:currentUser.uid},{merge:true});await audit('customer_note','customer',{mobile:m});toast('Notes saved.');w.remove()}catch(err){b.disabled=false;toast('Could not save: '+(err.code||err.message))}})}
+async function csLoad(){const S=RF.cs;if(S.preset!=='custom')[S.from,S.to]=presetDates(S.preset);$('csFrom').value=S.from;$('csTo').value=S.to;
+ if(!S.from||!S.to||S.from>S.to)return $('csOut').innerHTML='<p class="muted">Pick a valid date range.</p>';if((new Date(S.to)-new Date(S.from))/864e5>370)return $('csOut').innerHTML='<p class="muted">Please choose a period of 12 months or less.</p>';
+ $('csOut').innerHTML='<p class="muted">Loading…</p>';
+ try{const [os,cs]=await Promise.all([rangeDocs('orders',S.from,S.to),getDocs(collection(db,'customers'))]);const profiles={};cs.docs.forEach(d=>{const x=d.data();profiles[d.id]={...x,mobile:d.id}});S.profiles=profiles;S.agg=csAggregate(os,profiles);csPaint()}
+ catch(e){$('csOut').innerHTML='<p class="muted">Could not load customer data: '+esc(e.code||e.message)+(e.code==='permission-denied'?'. Publish the latest firestore.rules.':'')+'</p>'}}
+async function loadCustomers(){const S=RF.cs||(RF.cs={preset:'90d',from:'',to:'',sort:'visits',q:'',show:'ordered',mask:false,profiles:{},agg:{by:{},anon:0,sales:0}});
+ if(!$('csFrom')){$('customersTab').innerHTML=`<div class="card"><div class="top"><div><h2>Customer analytics &amp; profiles</h2><p class="muted">Visit frequency, favourite dishes, spend and guest profiles collected through the QR form.</p></div><div class="row-actions"><button class="btn light" id="csQr">▦ Guest profile QR</button><button class="btn light" data-cs-csv="all">⬇ Guests CSV</button><button class="btn light" data-cs-csv="mkt">⬇ Marketing list</button></div></div>
+  <div class="range-bar"><div class="range-head">📅 Select report period</div><div><label class="small muted">Select period</label><select id="csPreset" class="input">${PRESETS.map(([v,l])=>`<option value="${v}"${v===S.preset?' selected':''}>${l}</option>`).join('')}</select></div><div><label class="small muted">Select date from</label><input id="csFrom" type="date" class="input"></div><div><label class="small muted">Select date to</label><input id="csTo" type="date" class="input"></div></div>
+  <label class="small"><input type="checkbox" id="csMask"> Hide mobile numbers on screen</label></div><div id="csOut"></div>`;
+  $('csPreset').onchange=()=>{S.preset=$('csPreset').value;csLoad()};$('csFrom').onchange=$('csTo').onchange=()=>{S.preset='custom';S.from=$('csFrom').value;S.to=$('csTo').value;$('csPreset').value='custom';csLoad()};
+  $('csMask').onchange=()=>{S.mask=$('csMask').checked;csPaint()};$('csQr').onclick=showJoinQR}
+ await csLoad()}
+document.querySelector('.tab[data-tab="customers"]').addEventListener('click',loadCustomers);
+document.addEventListener('click',e=>{const g=e.target.closest('[data-guest]'),c=e.target.closest('[data-cs-csv]');if(g&&RF.cs)guestCard(g.dataset.guest);
+ if(c&&RF.cs){const S=RF.cs,rows=csList();const mk=c.dataset.csCsv==='mkt',list=(mk?Object.values(S.profiles).filter(p=>p.offersOptIn).map(p=>({mobile:p.mobile,p,visits:(S.agg.by[p.mobile]||{}).visits||0,orders:0,spend:0,avg:0,last:0,fav:''})):rows);
+  if(mk)downloadCSV(`marketing_list_${localISO(new Date())}.csv`,['Name','Mobile','Email','Diet','Birthday','Anniversary','Area'],list.map(r=>[r.p.name,r.mobile,r.p.email||'',r.p.diet||'',r.p.dob||'',r.p.anniversary||'',r.p.area||'']));
+  else downloadCSV(`guests_${S.from}_${S.to}.csv`,['Name','Mobile','Email','Birthday','Anniversary','Diet','Allergies','Spice','Favourites','How found','Area','Offers opt-in','Visits','Orders','Total spend','Avg bill','Last visit','Favourite dish'],list.map(r=>{const p=r.p||{};return [p.name||'',r.mobile,p.email||'',p.dob||'',p.anniversary||'',p.diet||'',[].concat(p.allergies||[],p.allergyOther?[p.allergyOther]:[]).join('; '),p.spice||'',(p.favourites||[]).join('; '),p.howFound||'',p.area||'',p.offersOptIn?'Yes':'No',r.visits,r.orders,r2(r.spend),r2(r.avg),r.last?localISO(new Date(r.last)):'',r.fav||'']}))}});
+/* ---- appearance: themes and patterns ---- */
+const STAFF_THEMES={plum:{n:'Plum (default)',ink:'#2B1346',acc:'#FFB703',leaf:'#0C8A55',leafD:'#0A7447',line:'#E8DFF5',soft:'#EFE7FA',mist:'#F6F2FC'},ocean:{n:'Ocean',ink:'#0F2A43',acc:'#F2B84B',leaf:'#1F7A8C',leafD:'#18636F',line:'#D9E7EE',soft:'#E5F0F5',mist:'#F2F8FB'},forest:{n:'Forest',ink:'#17332A',acc:'#E3B04B',leaf:'#2F7D5B',leafD:'#256449',line:'#DCE8E1',soft:'#E7F0EA',mist:'#F3F8F5'},rose:{n:'Rose',ink:'#4A1D2E',acc:'#F0B35C',leaf:'#B0486A',leafD:'#8F3A56',line:'#F1DDE4',soft:'#F8E9EE',mist:'#FCF4F7'},slate:{n:'Slate',ink:'#1F2933',acc:'#F2B84B',leaf:'#3E6D8E',leafD:'#32586F',line:'#DDE3E8',soft:'#E8EDF1',mist:'#F4F6F8'},spice:{n:'Spice',ink:'#3B2300',acc:'#F4A340',leaf:'#C2701B',leafD:'#A15C14',line:'#F0E3D2',soft:'#F7EBDC',mist:'#FCF6EE'}};
+const CUST_SWATCHES=['#2F8F83','#D9822B','#4F5FB8','#C2476B','#3F8A4F','#475B6E'],PATTERNS=[['none','No pattern'],['dots','Dots'],['grid','Grid'],['stripes','Diagonal lines'],['scallops','Scallops'],['diamonds','Diamonds']];
+function paintTheme(){const b=RF.brand||{},pv=RF.pv||{},T=STAFF_THEMES[pv.staffTheme||b.staffTheme]||STAFF_THEMES.plum,s=document.documentElement.style,cust=isCustomerMode;
+ [['--ink',T.ink],['--saffron',T.acc],['--leaf',T.leaf],['--leaf-dark',T.leafD],['--line',T.line],['--soft',T.soft],['--mist',T.mist]].forEach(([k,v])=>s.setProperty(k,v));
+ const cc=pv.color||b.themeColor,col=/^#[0-9a-f]{6}$/i.test(cc||'')?cc:'#2F8F83';s.setProperty('--ca',col);
+ const pat=cust?(pv.pattern||b.themePattern||'none'):(pv.staffPattern||b.staffPattern||'none');document.body.dataset.pat=pat;s.setProperty('--pc',cust?col:T.leaf)}
+const _pb62=paintBrand;paintBrand=function(){_pb62();paintTheme()};
+(function(){if(!$('restStaffTheme')){const html=`<h3 style="margin-top:18px">Appearance</h3><p class="muted small">Colours and background patterns. Changes preview instantly; press Save to keep them.</p><label>Customer page colour</label><div class="sw-row" id="swRow">${CUST_SWATCHES.map(c=>`<button type="button" class="sw" style="background:${c}" data-sw="${c}" aria-label="${c}"></button>`).join('')}</div><div class="grid"><div><label>Customer page pattern</label><select id="restPattern" class="input">${PATTERNS.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></div><div><label>Staff &amp; admin colour theme</label><select id="restStaffTheme" class="input">${Object.entries(STAFF_THEMES).map(([k,t])=>`<option value="${k}">${t.n}</option>`).join('')}</select></div><div><label>Staff &amp; admin pattern</label><select id="restStaffPattern" class="input">${PATTERNS.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></div></div><button type="button" class="btn light" id="restThemeReset">Reset to default look</button>`;
+ $('restBannerClear').insertAdjacentHTML('afterend',html)}
+ const prev=()=>{RF.pv={color:$('restColor').value,pattern:$('restPattern').value,staffTheme:$('restStaffTheme').value,staffPattern:$('restStaffPattern').value};paintTheme()};
+ ['restColor','restPattern','restStaffTheme','restStaffPattern'].forEach(i=>$(i).addEventListener('input',prev));
+ $('swRow').onclick=e=>{const b=e.target.closest('[data-sw]');if(b){$('restColor').value=b.dataset.sw;prev()}};
+ $('restThemeReset').onclick=()=>{$('restColor').value='#2F8F83';$('restPattern').value='none';$('restStaffTheme').value='plum';$('restStaffPattern').value='none';prev()}})();
+const _ls62=loadSettings;loadSettings=async function(){await _ls62();const x=RF.brand||{};$('restPattern').value=x.themePattern||'none';$('restStaffTheme').value=STAFF_THEMES[x.staffTheme]?x.staffTheme:'plum';$('restStaffPattern').value=x.staffPattern||'none';RF.pv=null;paintTheme()};
+const _sv62=$('saveSettingsBtn').onclick;$('saveSettingsBtn').onclick=async()=>{try{await setDoc(doc(db,'restaurants','demo'),{themePattern:$('restPattern').value,staffTheme:$('restStaffTheme').value,staffPattern:$('restStaffPattern').value,updatedAt:serverTimestamp(),updatedBy:currentUser.uid},{merge:true})}catch(e){return msg($('adminMsg'),'Could not save appearance: '+(e.code||e.message))}RF.pv=null;await _sv62()};
+auditActionLabel=(f=>a=>({customer_note:'Guest note saved'})[a]||f(a))(auditActionLabel);
+paintTheme();
 </script>
 </body></html>
